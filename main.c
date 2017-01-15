@@ -35,6 +35,10 @@ void main(void)
 
     while (1)
     {
-        // Add your application code
+        UC_Toggle();
+        for (int i = 0; i < 5; i++)
+        {
+            __delay_ms(10);
+        }
     }
 }

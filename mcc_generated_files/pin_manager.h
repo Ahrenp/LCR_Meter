@@ -71,6 +71,33 @@
 #define RB0_SetAnalogMode() do { ANSELBbits.ANSB0 = 1; } while(0)
 #define RB0_SetDigitalMode()do { ANSELBbits.ANSB0 = 0; } while(0)
 
+// get/set UC aliases
+#define UC_TRIS               TRISBbits.TRISB1
+#define UC_LAT                LATBbits.LATB1
+#define UC_PORT               PORTBbits.RB1
+#define UC_WPU                WPUBbits.WPUB1
+#define UC_ANS                ANSELBbits.ANSB1
+#define UC_SetHigh()            do { LATBbits.LATB1 = 1; } while(0)
+#define UC_SetLow()             do { LATBbits.LATB1 = 0; } while(0)
+#define UC_Toggle()             do { LATBbits.LATB1 = ~LATBbits.LATB1; } while(0)
+#define UC_GetValue()           PORTBbits.RB1
+#define UC_SetDigitalInput()    do { TRISBbits.TRISB1 = 1; } while(0)
+#define UC_SetDigitalOutput()   do { TRISBbits.TRISB1 = 0; } while(0)
+#define UC_SetPullup()      do { WPUBbits.WPUB1 = 1; } while(0)
+#define UC_ResetPullup()    do { WPUBbits.WPUB1 = 0; } while(0)
+#define UC_SetAnalogMode()  do { ANSELBbits.ANSB1 = 1; } while(0)
+#define UC_SetDigitalMode() do { ANSELBbits.ANSB1 = 0; } while(0)
+
+// get/set RC6 procedures
+#define RC6_SetHigh()    do { LATCbits.LATC6 = 1; } while(0)
+#define RC6_SetLow()   do { LATCbits.LATC6 = 0; } while(0)
+#define RC6_Toggle()   do { LATCbits.LATC6 = ~LATCbits.LATC6; } while(0)
+#define RC6_GetValue()         PORTCbits.RC6
+#define RC6_SetDigitalInput()   do { TRISCbits.TRISC6 = 1; } while(0)
+#define RC6_SetDigitalOutput()  do { TRISCbits.TRISC6 = 0; } while(0)
+#define RC6_SetAnalogMode() do { ANSELCbits.ANSC6 = 1; } while(0)
+#define RC6_SetDigitalMode()do { ANSELCbits.ANSC6 = 0; } while(0)
+
 /**
    @Param
     none

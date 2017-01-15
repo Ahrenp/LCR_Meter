@@ -51,6 +51,7 @@
 #include <stdbool.h>
 #include "interrupt_manager.h"
 #include "ext_int.h"
+#include "eusart1.h"
 #include "tmr0.h"
 
 #define _XTAL_FREQ  16000000

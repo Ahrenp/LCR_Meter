@@ -46,7 +46,7 @@
 // Configuration bits: selected in the GUI
 
 // CONFIG1H
-#pragma config FOSC = INTIO67    // Oscillator Selection bits->Internal oscillator block
+#pragma config FOSC = HSMP    // Oscillator Selection bits->HS oscillator (medium power 4-16 MHz)
 #pragma config PLLCFG = OFF    // 4X PLL Enable->Oscillator used directly
 #pragma config PRICLKEN = ON    // Primary clock enable bit->Primary clock enabled
 #pragma config FCMEN = OFF    // Fail-Safe Clock Monitor Enable bit->Fail-Safe Clock Monitor disabled
@@ -116,6 +116,7 @@ void SYSTEM_Initialize(void)
     OSCILLATOR_Initialize();
     EXT_INT_Initialize();
     TMR0_Initialize();
+    EUSART1_Initialize();
 }
 
 void OSCILLATOR_Initialize(void)
