@@ -60,6 +60,7 @@ uint16_t TMR0_ReadTimer(void)
 
     readValLow  = TMR0L;
     readValHigh = TMR0H;
+    
     //Subtract reload value to get absolute timing
     readVal  = ((uint16_t)readValHigh << 8) + readValLow - (timer0ReloadVal);
 

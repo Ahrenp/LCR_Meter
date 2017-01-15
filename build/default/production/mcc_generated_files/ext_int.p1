@@ -7139,104 +7139,104 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ext_int.c: 23: {
 [e :U _INT0_ISR ]
 [f ]
-[; ;ext_int.c: 24: TMR0_StopTimer();
-"24
-[e ( _TMR0_StopTimer ..  ]
-[; ;ext_int.c: 25: reading = TMR0_ReadTimer();
+[; ;ext_int.c: 25: TMR0_StopTimer();
 "25
+[e ( _TMR0_StopTimer ..  ]
+[; ;ext_int.c: 26: reading = TMR0_ReadTimer();
+"26
 [e = _reading ( _TMR0_ReadTimer ..  ]
-[; ;ext_int.c: 27: result = 5050.0 * (float)reading / 3.0;
-"27
-[e = _result -> / * .5050.0 -> -> _reading `f `d .3.0 `f ]
-[; ;ext_int.c: 28: printf("Capacitance: %0.2f pF\r\n", result);
-"28
-[e ( _printf , (. :s 1C -> _result `d ]
-[; ;ext_int.c: 30: TMR0_Reload();
-"30
+[; ;ext_int.c: 29: result = 494.5 * ((float)reading - 27) / 3.01004;
+"29
+[e = _result -> / * .494.5 -> - -> _reading `f -> -> 27 `i `f `d .3.01004 `f ]
+[; ;ext_int.c: 32: printf("Capacitance: %0.2f pF (Count: %u)\r\n", result, reading);
+"32
+[e ( _printf , , (. :s 1C -> _result `d _reading ]
+[; ;ext_int.c: 35: TMR0_Reload();
+"35
 [e ( _TMR0_Reload ..  ]
-[; ;ext_int.c: 31: TMR0_StartTimer();
-"31
+[; ;ext_int.c: 38: TMR0_StartTimer();
+"38
 [e ( _TMR0_StartTimer ..  ]
-[; ;ext_int.c: 33: (INTCONbits.INT0IF = 0);
-"33
+[; ;ext_int.c: 41: (INTCONbits.INT0IF = 0);
+"41
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;ext_int.c: 34: }
-"34
+[; ;ext_int.c: 42: }
+"42
 [e :UE 1082 ]
 }
-"39
+"47
 [v _INT0_CallBack `(v ~T0 @X0 1 ef ]
-"40
+"48
 {
-[; ;ext_int.c: 39: void INT0_CallBack(void)
-[; ;ext_int.c: 40: {
+[; ;ext_int.c: 47: void INT0_CallBack(void)
+[; ;ext_int.c: 48: {
 [e :U _INT0_CallBack ]
 [f ]
-[; ;ext_int.c: 42: if(INT0_InterruptHandler)
-"42
+[; ;ext_int.c: 50: if(INT0_InterruptHandler)
+"50
 [e $ ! != _INT0_InterruptHandler -> -> 0 `i `*F7420 1084  ]
-[; ;ext_int.c: 43: {
-"43
+[; ;ext_int.c: 51: {
+"51
 {
-[; ;ext_int.c: 44: INT0_InterruptHandler();
-"44
+[; ;ext_int.c: 52: INT0_InterruptHandler();
+"52
 [e ( *U _INT0_InterruptHandler ..  ]
-"45
+"53
 }
 [e :U 1084 ]
-[; ;ext_int.c: 45: }
-[; ;ext_int.c: 46: }
-"46
+[; ;ext_int.c: 53: }
+[; ;ext_int.c: 54: }
+"54
 [e :UE 1083 ]
 }
-"51
+"59
 [v _INT0_SetInterruptHandler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;ext_int.c: 51: void INT0_SetInterruptHandler(void* InterruptHandler){
+[; ;ext_int.c: 59: void INT0_SetInterruptHandler(void* InterruptHandler){
 [e :U _INT0_SetInterruptHandler ]
 [v _InterruptHandler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;ext_int.c: 52: INT0_InterruptHandler = InterruptHandler;
-"52
+[; ;ext_int.c: 60: INT0_InterruptHandler = InterruptHandler;
+"60
 [e = _INT0_InterruptHandler -> _InterruptHandler `*F7420 ]
-[; ;ext_int.c: 53: }
-"53
-[e :UE 1085 ]
-}
-"58
-[v _INT0_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
-{
-[; ;ext_int.c: 58: void INT0_DefaultInterruptHandler(void){
-[e :U _INT0_DefaultInterruptHandler ]
-[f ]
 [; ;ext_int.c: 61: }
 "61
+[e :UE 1085 ]
+}
+"66
+[v _INT0_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
+{
+[; ;ext_int.c: 66: void INT0_DefaultInterruptHandler(void){
+[e :U _INT0_DefaultInterruptHandler ]
+[f ]
+[; ;ext_int.c: 69: }
+"69
 [e :UE 1086 ]
 }
-"71
+"79
 [v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
-"72
+"80
 {
-[; ;ext_int.c: 71: void EXT_INT_Initialize(void)
-[; ;ext_int.c: 72: {
+[; ;ext_int.c: 79: void EXT_INT_Initialize(void)
+[; ;ext_int.c: 80: {
 [e :U _EXT_INT_Initialize ]
 [f ]
-[; ;ext_int.c: 80: (INTCONbits.INT0IF = 0);
-"80
+[; ;ext_int.c: 88: (INTCONbits.INT0IF = 0);
+"88
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;ext_int.c: 81: (INTCON2bits.INTEDG0 = 0);
-"81
+[; ;ext_int.c: 89: (INTCON2bits.INTEDG0 = 0);
+"89
 [e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;ext_int.c: 83: INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
-"83
+[; ;ext_int.c: 91: INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
+"91
 [e ( _INT0_SetInterruptHandler (1 -> &U _INT0_DefaultInterruptHandler `*v ]
-[; ;ext_int.c: 84: (INTCONbits.INT0IE = 1);
-"84
+[; ;ext_int.c: 92: (INTCONbits.INT0IE = 1);
+"92
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;ext_int.c: 90: }
-"90
+[; ;ext_int.c: 98: }
+"98
 [e :UE 1087 ]
 }
-[p f _printf 8462340 ]
-[a 1C 67 97 112 97 99 105 116 97 110 99 101 58 32 37 48 46 50 102 32 112 70 13 10 0 ]
+[p f _printf 8463364 ]
+[a 1C 67 97 112 97 99 105 116 97 110 99 101 58 32 37 48 46 50 102 32 112 70 32 40 67 111 117 110 116 58 32 37 117 41 13 10 0 ]
 

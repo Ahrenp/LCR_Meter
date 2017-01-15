@@ -67,11 +67,11 @@
 [v _putch putch `(v  1 e 1 0 ]
 "22 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _INT0_ISR INT0_ISR `(v  1 e 1 0 ]
-"51
+"59
 [v _INT0_SetInterruptHandler INT0_SetInterruptHandler `(v  1 e 1 0 ]
-"58
+"66
 [v _INT0_DefaultInterruptHandler INT0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"71
+"79
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
 "4 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
@@ -92,13 +92,13 @@
 [v _TMR0_StopTimer TMR0_StopTimer `(v  1 e 1 0 ]
 "55
 [v _TMR0_ReadTimer TMR0_ReadTimer `(ui  1 e 2 0 ]
-"76
+"77
 [v _TMR0_Reload TMR0_Reload `(v  1 e 1 0 ]
-"83
+"84
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
-"103
+"104
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
-"107
+"108
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 "49 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
@@ -357,11 +357,11 @@
 {
 "47
 } 0
-"103
+"104
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
-[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.2v  1 p 2 25 ]
-"105
+[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.2v  1 p 2 39 ]
+"106
 } 0
 "51 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -378,16 +378,16 @@
 {
 "8
 } 0
-"71 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+"79 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
 {
-"90
+"98
 } 0
-"51
+"59
 [v _INT0_SetInterruptHandler INT0_SetInterruptHandler `(v  1 e 1 0 ]
 {
-[v INT0_SetInterruptHandler@InterruptHandler InterruptHandler `*.2v  1 p 2 25 ]
-"53
+[v INT0_SetInterruptHandler@InterruptHandler InterruptHandler `*.2v  1 p 2 39 ]
+"61
 } 0
 "55 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
@@ -399,20 +399,20 @@
 {
 "25
 } 0
-"83 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
+"84 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
-"100
+"101
 } 0
-"107
+"108
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
-"109
+"110
 } 0
 "22 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _INT0_ISR INT0_ISR `(v  1 e 1 0 ]
 {
-"34
+"42
 } 0
 "43 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
 [v i2_TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
@@ -442,7 +442,7 @@
 "499
 [v printf@c c `c  1 a 1 24 ]
 "464
-[v printf@f f `*.25Cuc  1 p 2 63 ]
+[v printf@f f `*.25Cuc  1 p 2 69 ]
 "1541
 } 0
 "425
@@ -451,7 +451,7 @@
 [v scale@scl scl `c  1 a 1 wreg ]
 [v scale@scl scl `c  1 a 1 wreg ]
 "428
-[v scale@scl scl `c  1 a 1 41 ]
+[v scale@scl scl `c  1 a 1 53 ]
 "441
 } 0
 "111 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/eusart1.c
@@ -486,7 +486,7 @@
 [v fround@prec prec `uc  1 a 1 wreg ]
 [v fround@prec prec `uc  1 a 1 wreg ]
 "413
-[v fround@prec prec `uc  1 a 1 44 ]
+[v fround@prec prec `uc  1 a 1 56 ]
 "418
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul16.c
@@ -503,14 +503,14 @@
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
 {
 "65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 30 ]
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 42 ]
 "64
-[v ___ftmul@sign sign `uc  1 a 1 34 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 33 ]
-[v ___ftmul@exp exp `uc  1 a 1 29 ]
+[v ___ftmul@sign sign `uc  1 a 1 46 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 45 ]
+[v ___ftmul@exp exp `uc  1 a 1 41 ]
 "62
-[v ___ftmul@f1 f1 `f  1 p 3 20 ]
-[v ___ftmul@f2 f2 `f  1 p 3 23 ]
+[v ___ftmul@f1 f1 `f  1 p 3 32 ]
+[v ___ftmul@f2 f2 `f  1 p 3 35 ]
 "157
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\awmod.c
@@ -576,10 +576,10 @@
 [v ___llmod __llmod `(ul  1 e 4 0 ]
 {
 "11
-[v ___llmod@counter counter `uc  1 a 1 8 ]
+[v ___llmod@counter counter `uc  1 a 1 21 ]
 "8
-[v ___llmod@dividend dividend `ul  1 p 4 0 ]
-[v ___llmod@divisor divisor `ul  1 p 4 4 ]
+[v ___llmod@dividend dividend `ul  1 p 4 13 ]
+[v ___llmod@divisor divisor `ul  1 p 4 17 ]
 "26
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\lldiv.c
@@ -598,31 +598,31 @@
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
-[v ___fttol@lval lval `ul  1 a 4 52 ]
+[v ___fttol@lval lval `ul  1 a 4 64 ]
 "46
-[v ___fttol@exp1 exp1 `uc  1 a 1 56 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 51 ]
+[v ___fttol@exp1 exp1 `uc  1 a 1 68 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 63 ]
 "44
-[v ___fttol@f1 f1 `f  1 p 3 42 ]
+[v ___fttol@f1 f1 `f  1 p 3 54 ]
 "73
 } 0
 "20 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
 {
-[v ___ftsub@f1 f1 `f  1 p 3 57 ]
-[v ___ftsub@f2 f2 `f  1 p 3 60 ]
+[v ___ftsub@f1 f1 `f  1 p 3 32 ]
+[v ___ftsub@f2 f2 `f  1 p 3 35 ]
 "27
 } 0
 "86 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 {
 "88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 56 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 55 ]
-[v ___ftadd@sign sign `uc  1 a 1 54 ]
+[v ___ftadd@exp1 exp1 `uc  1 a 1 31 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 30 ]
+[v ___ftadd@sign sign `uc  1 a 1 29 ]
 "86
-[v ___ftadd@f1 f1 `f  1 p 3 45 ]
-[v ___ftadd@f2 f2 `f  1 p 3 48 ]
+[v ___ftadd@f1 f1 `f  1 p 3 20 ]
+[v ___ftadd@f2 f2 `f  1 p 3 23 ]
 "148
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\ftneg.c
@@ -648,14 +648,14 @@
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
-[v ___ftdiv@f3 f3 `f  1 a 3 45 ]
+[v ___ftdiv@f3 f3 `f  1 a 3 57 ]
 "59
-[v ___ftdiv@sign sign `uc  1 a 1 49 ]
-[v ___ftdiv@exp exp `uc  1 a 1 48 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 44 ]
+[v ___ftdiv@sign sign `uc  1 a 1 61 ]
+[v ___ftdiv@exp exp `uc  1 a 1 60 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 56 ]
 "54
-[v ___ftdiv@f1 f1 `f  1 p 3 35 ]
-[v ___ftdiv@f2 f2 `f  1 p 3 38 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 47 ]
+[v ___ftdiv@f2 f2 `f  1 p 3 50 ]
 "86
 } 0
 "62 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\float.c
@@ -671,10 +671,10 @@
 {
 "53
 } 0
-"76
+"77
 [v _TMR0_Reload TMR0_Reload `(v  1 e 1 0 ]
 {
-"81
+"82
 } 0
 "55
 [v _TMR0_ReadTimer TMR0_ReadTimer `(ui  1 e 2 0 ]
@@ -685,5 +685,5 @@
 [v TMR0_ReadTimer@readValHigh readValHigh `uc  1 a 1 9 ]
 "58
 [v TMR0_ReadTimer@readValLow readValLow `uc  1 a 1 8 ]
-"67
+"68
 } 0

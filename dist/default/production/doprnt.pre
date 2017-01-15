@@ -417,7 +417,13 @@ default:
 # 813
 continue;
 
-# 822
+
+
+case 'u':
+flag |= 0xC0;
+break;
+
+
 }
 
 
@@ -569,9 +575,21 @@ prec--;
 continue;
 }
 
-# 1290
+# 1273
+{
+
+# 1286
+val = (*(unsigned *)__va_arg((*(unsigned **)ap), (unsigned)0));
+}
+
+
 if(prec == 0 && val == 0)
 prec++;
+
+# 1305
+for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
+if(val < dpowers[c])
+break;
 
 # 1339
 if(c < prec)
@@ -628,6 +646,20 @@ if(flag & 0x03)
 (putch('-') );
 
 # 1469
+}
+
+# 1474
+while(prec--) {
+
+# 1478
+{
+
+# 1489
+c = (val / dpowers[prec]) % 10 + '0';
+
+# 1523
+}
+(putch(c) );
 }
 
 # 1533

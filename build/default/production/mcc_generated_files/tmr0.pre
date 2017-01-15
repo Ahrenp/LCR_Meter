@@ -8977,6 +8977,7 @@ uint8_t readValHigh;
 readValLow = TMR0L;
 readValHigh = TMR0H;
 
+
 readVal = ((uint16_t)readValHigh << 8) + readValLow - (timer0ReloadVal);
 
 return readVal;

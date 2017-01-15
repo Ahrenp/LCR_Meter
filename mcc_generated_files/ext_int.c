@@ -21,15 +21,23 @@ void (*INT0_InterruptHandler)(void);
 */
 void INT0_ISR(void)
 {
+    //Stop microsecond timer and get reading
     TMR0_StopTimer();
     reading = TMR0_ReadTimer();
     
-    result = 505.0 * (float)reading / 3.0;
-    printf("Capacitance: %0.2f pF\r\n", result);
+    //Compute capacitance reading in pF
+    result = 494.5 * ((float)reading - 27) / 3.01004;
     
+    //Print capacitance reading
+    printf("Capacitance: %0.2f pF (Count: %u)\r\n", result, reading);
+    
+    //Reload the timer with inital values for its specified (60ms) range
     TMR0_Reload();
+    
+    //Restart timer
     TMR0_StartTimer();
     
+    //Clear interrupt flag
     EXT_INT0_InterruptFlagClear();  
 }
 
