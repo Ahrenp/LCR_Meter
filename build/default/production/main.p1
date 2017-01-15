@@ -2,42 +2,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "71 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"7475 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
-[s S452 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S452 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
-"7485
-[s S453 :1 `uc 1 ]
-[n S453 . LB0 ]
-"7488
-[s S454 :1 `uc 1 :1 `uc 1 ]
-[n S454 . . LB1 ]
-"7492
-[s S455 :2 `uc 1 :1 `uc 1 ]
-[n S455 . . LB2 ]
-"7496
-[s S456 :3 `uc 1 :1 `uc 1 ]
-[n S456 . . LB3 ]
-"7500
-[s S457 :4 `uc 1 :1 `uc 1 ]
-[n S457 . . LB4 ]
-"7504
-[s S458 :5 `uc 1 :1 `uc 1 ]
-[n S458 . . LB5 ]
-"7508
-[s S459 :6 `uc 1 :1 `uc 1 ]
-[n S459 . . LB6 ]
-"7512
-[s S460 :7 `uc 1 :1 `uc 1 ]
-[n S460 . . LB7 ]
-"7474
-[u S451 `S452 1 `S453 1 `S454 1 `S455 1 `S456 1 `S457 1 `S458 1 `S459 1 `S460 1 ]
-[n S451 . . . . . . . . . . ]
-"7517
-[v _LATBbits `VS451 ~T0 @X0 0 e@3978 ]
-[v F7342 `(v ~T0 @X0 1 tf1`ul ]
-"157 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18.h
-[v __delay `JF7342 ~T0 @X0 0 e ]
-[p i __delay ]
+"16620 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
+[s S1053 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1053 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"16630
+[s S1054 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1054 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"16640
+[s S1055 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1055 . . GIEL GIEH ]
+"16619
+[u S1052 `S1053 1 `S1054 1 `S1055 1 ]
+[n S1052 . . . . ]
+"16646
+[v _INTCONbits `VS1052 ~T0 @X0 0 e@4082 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7142,50 +7120,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 6: SYSTEM_Initialize();
 "6
 [e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 25: (INTCONbits.GIE = 1);
+"25
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 28: (INTCONbits.PEIE = 1);
+"28
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
 [; ;main.c: 36: while (1)
 "36
 [e :U 1084 ]
 [; ;main.c: 37: {
 "37
 {
-[; ;main.c: 38: do { LATBbits.LATB1 = ~LATBbits.LATB1; } while(0);
-"38
-[e :U 1088 ]
-{
-[e = . . _LATBbits 0 1 -> ~ -> . . _LATBbits 0 1 `i `uc ]
-}
-[e :U 1087 ]
-[; ;main.c: 39: for (int i = 0; i < 5; i++)
 "39
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 5 `i 1089  ]
-[e $U 1090  ]
-"40
-[e :U 1089 ]
-[; ;main.c: 40: {
-{
-[; ;main.c: 41: _delay((unsigned long)((10)*(16000000/4000.0)));
-"41
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"42
-}
-"39
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 5 `i 1089  ]
-[e :U 1090 ]
-"42
-}
-"43
 }
 [e :U 1083 ]
 "36
 [e $U 1084  ]
 [e :U 1085 ]
-[; ;main.c: 42: }
-[; ;main.c: 43: }
-[; ;main.c: 44: }
-"44
+[; ;main.c: 39: }
+[; ;main.c: 40: }
+"40
 [e :UE 1082 ]
 }

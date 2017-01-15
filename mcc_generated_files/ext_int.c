@@ -1,34 +1,13 @@
 /**
-  EXT_INT Generated Driver File 
-
-  @Company:
-    Microchip Technology Inc.
-
-  @File Name:
-    ext_int.c
-
-  @Summary
-    This is the generated driver implementation file for the EXT_INT 
-    driver using MPLAB(c) Code Configurator
-
-  @Description:
-    This source file provides implementations for driver APIs for EXT_INT. 
-    Generation Information : 
-        Product Revision  :  MPLAB(c) Code Configurator - 4.0
-        Device            :  PIC18F25K22
-        Driver Version    :  1.0
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.40
-*/
-
-/**
    Section: Includes
  */
 #include <xc.h>
+#include <stdio.h>
 #include "ext_int.h"
+#include "tmr0.h"
 //***User Area Begin->code: Add External Interrupt handler specific headers 
-
+uint16_t reading;
+float result;
 //***User Area End->code: Add External Interrupt handler specific headers
 
 /**
@@ -42,14 +21,16 @@ void (*INT0_InterruptHandler)(void);
 */
 void INT0_ISR(void)
 {
-    //***User Area Begin->code***
-
-    //***User Area End->code***
+    TMR0_StopTimer();
+    reading = TMR0_ReadTimer();
     
-    EXT_INT0_InterruptFlagClear();
-
-    // Callback function gets called everytime this ISR executes
-    INT0_CallBack();    
+    result = 505.0 * (float)reading / 3.0;
+    printf("Capacitance: %0.2f pF\r\n", result);
+    
+    TMR0_Reload();
+    TMR0_StartTimer();
+    
+    EXT_INT0_InterruptFlagClear();  
 }
 
 /**

@@ -9029,13 +9029,15 @@ void main(void)
 
 SYSTEM_Initialize();
 
+# 25
+(INTCONbits.GIE = 1);
+
+
+(INTCONbits.PEIE = 1);
+
 # 36
 while (1)
 {
-do { LATBbits.LATB1 = ~LATBbits.LATB1; } while(0);
-for (int i = 0; i < 5; i++)
-{
-_delay((unsigned long)((10)*(16000000/4000.0)));
-}
+
 }
 }

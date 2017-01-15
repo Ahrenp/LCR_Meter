@@ -8915,12 +8915,18 @@ extern void (*TMR0_InterruptHandler)(void);
 # 344
 void TMR0_DefaultInterruptHandler(void);
 
-# 57 "mcc_generated_files/tmr0.c"
+# 111 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+
+# 123
+void PIN_MANAGER_IOC(void);
+
+# 9 "mcc_generated_files/tmr0.c"
 void (*TMR0_InterruptHandler)(void);
 
 volatile uint16_t timer0ReloadVal;
 
-# 66
+
 void TMR0_Initialize(void)
 {
 
@@ -8929,10 +8935,10 @@ void TMR0_Initialize(void)
 T0CON = 0x11;
 
 
-TMR0H = 0xFF;
+TMR0H = 0x15;
 
 
-TMR0L = 0xFE;
+TMR0L = 0x9F;
 
 
 timer0ReloadVal = (TMR0H << 8) | TMR0L;
@@ -8970,7 +8976,8 @@ uint8_t readValHigh;
 
 readValLow = TMR0L;
 readValHigh = TMR0H;
-readVal = ((uint16_t)readValHigh << 8) + readValLow;
+
+readVal = ((uint16_t)readValHigh << 8) + readValLow - (timer0ReloadVal);
 
 return readVal;
 }
@@ -9014,7 +9021,6 @@ TMR0_InterruptHandler = InterruptHandler;
 }
 
 void TMR0_DefaultInterruptHandler(void){
-
-
+LATBbits.LATB1 = ~LATBbits.LATB1;
 }
 

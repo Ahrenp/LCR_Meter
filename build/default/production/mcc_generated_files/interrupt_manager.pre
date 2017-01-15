@@ -9023,7 +9023,7 @@ void SYSTEM_Initialize(void);
 # 84
 void OSCILLATOR_Initialize(void);
 
-# 51 "mcc_generated_files/interrupt_manager.c"
+# 4 "mcc_generated_files/interrupt_manager.c"
 void INTERRUPT_Initialize (void)
 {
 
