@@ -7054,8 +7054,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 111: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 123: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 192: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 204: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -7134,8 +7134,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 308: void TMR0_SetInterruptHandler(void *InterruptHandler);
 [; ;tmr0.h: 326: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 344: void TMR0_DefaultInterruptHandler(void);
-[; ;mcc.h: 71: void SYSTEM_Initialize(void);
-[; ;mcc.h: 84: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 68: void SYSTEM_Initialize(void);
+[; ;mcc.h: 81: void OSCILLATOR_Initialize(void);
 "4 mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize `(v ~T0 @X0 1 ef ]
 "5

@@ -5,11 +5,12 @@
 #include <stdio.h>
 #include "ext_int.h"
 #include "tmr0.h"
+#include "../lcd.h"
 //***User Area Begin->code: Add External Interrupt handler specific headers 
+
+//***User Area End->code: Add External Interrupt handler specific headers
 uint16_t reading;
 float result;
-//***User Area End->code: Add External Interrupt handler specific headers
-
 /**
    Section: External Interrupt Handlers
  */

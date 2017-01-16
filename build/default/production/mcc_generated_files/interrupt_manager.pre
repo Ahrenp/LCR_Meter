@@ -8798,10 +8798,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 111 "mcc_generated_files/pin_manager.h"
+# 192 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 123
+# 204
 void PIN_MANAGER_IOC(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
@@ -9017,10 +9017,10 @@ extern void (*TMR0_InterruptHandler)(void);
 # 344
 void TMR0_DefaultInterruptHandler(void);
 
-# 71 "mcc_generated_files/mcc.h"
+# 68 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 84
+# 81
 void OSCILLATOR_Initialize(void);
 
 # 4 "mcc_generated_files/interrupt_manager.c"

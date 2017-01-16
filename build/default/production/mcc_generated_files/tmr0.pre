@@ -8915,10 +8915,10 @@ extern void (*TMR0_InterruptHandler)(void);
 # 344
 void TMR0_DefaultInterruptHandler(void);
 
-# 111 "mcc_generated_files/pin_manager.h"
+# 192 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 123
+# 204
 void PIN_MANAGER_IOC(void);
 
 # 9 "mcc_generated_files/tmr0.c"

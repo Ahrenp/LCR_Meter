@@ -1,4 +1,8 @@
 #include "mcc_generated_files/mcc.h"
+#include "lcd.h"
+
+extern uint16_t reading;
+extern float result;
 
 void main(void)
 {
@@ -33,8 +37,14 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
     
+    lcd_init();
+    lcd_clear();
+    
     while (1)
     {
-        
+        //Update display
+        char cap_string[16];
+        sprintf(cap_string, "C:%12.0fpF", result);
+        lcd_sendStringToPos(1, 1, cap_string);
     }
 }

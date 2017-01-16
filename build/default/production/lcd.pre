@@ -1,77 +1,92 @@
 
-# 1 "mcc_generated_files/mcc.c"
+# 1 "lcd.c"
 
 
-# 49
-#pragma config FOSC = HSMP
-#pragma config PLLCFG = OFF
-#pragma config PRICLKEN = ON
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
+# 4 "lcd.h"
+#pragma warning disable 520
+#pragma warning disable 752
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
+typedef unsigned size_t;
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdlib.h"
+typedef unsigned short wchar_t;
+
+# 15
+typedef struct {
+int rem;
+int quot;
+} div_t;
+typedef struct {
+unsigned rem;
+unsigned quot;
+} udiv_t;
+typedef struct {
+long quot;
+long rem;
+} ldiv_t;
+typedef struct {
+unsigned long quot;
+unsigned long rem;
+} uldiv_t;
+
+# 53
+extern double atof(const char *);
+extern double strtod(const char *, const char **);
+extern int atoi(const char *);
+extern unsigned xtoi(const char *);
+extern long atol(const char *);
+extern long strtol(const char *, char **, int);
+
+extern int rand(void);
+extern void srand(unsigned int);
+extern void * calloc(size_t, size_t);
+extern div_t div(int numer, int denom);
+extern udiv_t udiv(unsigned numer, unsigned denom);
+extern ldiv_t ldiv(long numer, long denom);
+extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+extern unsigned int _rotl(unsigned int value, unsigned int shift);
+extern unsigned int _rotr(unsigned int value, unsigned int shift);
 
 
-#pragma config PWRTEN = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 190
 
 
-#pragma config WDTEN = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = PORTC1
-#pragma config PBADEN = ON
-#pragma config CCP3MX = PORTB5
-#pragma config HFOFST = ON
-#pragma config T3CMX = PORTC0
-#pragma config P2BMX = PORTB5
-#pragma config MCLRE = EXTMCLR
-
-
-#pragma config STVREN = ON
-#pragma config LVP = ON
-#pragma config XINST = OFF
-#pragma config DEBUG = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
-
-# 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
+extern void * malloc(size_t);
+extern void free(void *);
+extern void * realloc(void *, size_t);
 
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
+
+# 86 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdlib.h"
+extern int atexit(void (*)(void));
+extern char * getenv(const char *);
+extern char ** environ;
+extern int system(char *);
+extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+extern int abs(int);
+extern long labs(long);
+
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
+
+
+
+
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
+
+extern char * ftoa(float f, int * status);
+
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
 
 # 49 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h"
 extern volatile unsigned char ANSELA @ 0xF38;
@@ -8854,258 +8869,195 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 192 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
+# 28 "lcd.h"
+void lcd_sendCommand(char a);
 
-# 204
-void PIN_MANAGER_IOC(void);
+void lcd_clear();
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
-typedef signed char int8_t;
+void lcd_setPosition(unsigned char x, unsigned char y);
 
-# 20
-typedef signed int int16_t;
+void lcd_init(void);
 
-# 28
-typedef signed short long int int24_t;
+void lcd_sendChar(const char a);
 
-# 36
-typedef signed long int int32_t;
+void lcd_sendString(const char * a);
 
-# 43
-typedef unsigned char uint8_t;
+void lcd_sendStringToPos(unsigned char x, unsigned char y, const char * charString);
 
-# 49
-typedef unsigned int uint16_t;
+void lcd_sendInt(int number);
 
-# 56
-typedef unsigned short long int uint24_t;
+void lcd_sendIntToPos(unsigned char x, unsigned char y, int number);
 
-# 63
-typedef unsigned long int uint32_t;
+void lcd_sendFloat(float number);
 
-# 71
-typedef signed char int_least8_t;
+void lcd_sendFloatToPos(unsigned char x, unsigned char y, float number);
 
-# 78
-typedef signed int int_least16_t;
+void lcd_sendUInt(unsigned int number);
 
-# 90
-typedef signed short long int int_least24_t;
+void lcd_sendUIntToPos(unsigned char x, unsigned char y, unsigned int number);
 
-# 98
-typedef signed long int int_least32_t;
+void lcd_shiftRight();
 
-# 105
-typedef unsigned char uint_least8_t;
+void lcd_shiftLeft();
 
-# 111
-typedef unsigned int uint_least16_t;
+void _lcd_Port(char a);
 
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
-typedef unsigned char bool;
-
-# 110 "mcc_generated_files/interrupt_manager.h"
-void interrupt INTERRUPT_InterruptManager(void);
-
-# 122
-void INTERRUPT_Initialize (void);
-
-# 250 "mcc_generated_files/ext_int.h"
-void EXT_INT_Initialize(void);
-
-# 272
-void INT0_ISR(void);
-
-# 296
-void INT0_CallBack(void);
-
-# 319
-void INT0_SetInterruptHandler(void* InterruptHandler);
-
-# 343
-extern void (*INT0_InterruptHandler)(void);
-
-# 367
-void INT0_DefaultInterruptHandler(void);
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdio.h"
-struct __prbuf
+# 3 "lcd.c"
+void lcd_sendCommand(char a)
 {
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 95 "mcc_generated_files/eusart1.h"
-void EUSART1_Initialize(void);
-
-# 115
-uint8_t EUSART1_Read(void);
-
-# 135
-void EUSART1_Write(uint8_t txData);
-
-# 99 "mcc_generated_files/tmr0.h"
-void TMR0_Initialize(void);
-
-# 128
-void TMR0_StartTimer(void);
-
-# 160
-void TMR0_StopTimer(void);
-
-# 196
-uint16_t TMR0_ReadTimer(void);
-
-# 235
-void TMR0_WriteTimer(uint16_t timerVal);
-
-# 271
-void TMR0_Reload(void);
-
-# 289
-void TMR0_ISR(void);
-
-# 308
-void TMR0_SetInterruptHandler(void *InterruptHandler);
-
-# 326
-extern void (*TMR0_InterruptHandler)(void);
-
-# 344
-void TMR0_DefaultInterruptHandler(void);
-
-# 68 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
-
-# 81
-void OSCILLATOR_Initialize(void);
-
-# 111 "mcc_generated_files/mcc.c"
-void SYSTEM_Initialize(void)
-{
-
-INTERRUPT_Initialize();
-PIN_MANAGER_Initialize();
-OSCILLATOR_Initialize();
-EXT_INT_Initialize();
-TMR0_Initialize();
-EUSART1_Initialize();
+LATAbits.LA4 = 0;
+_lcd_Port(a);
+LATAbits.LA5 = 1;
+_delay((unsigned long)((4)*(16000000UL/4000.0)));
+LATAbits.LA5 = 0;
 }
 
-void OSCILLATOR_Initialize(void)
+void lcd_clear()
 {
-
-OSCCON = 0x70;
-
-OSCCON2 = 0x04;
-
-OSCTUNE = 0x00;
-
-
+lcd_sendCommand(0);
+lcd_sendCommand(1);
 }
 
+void lcd_setPosition(unsigned char x, unsigned char y)
+{
+unsigned char temp, i, j;
+if(y == 1)
+{
+temp = 0x80 + x - 1;
+i = temp>>4;
+j = temp & 0x0F;
+lcd_sendCommand(i);
+lcd_sendCommand(j);
+}
+else if(y == 2)
+{
+temp = 0xC0 + x - 1;
+i = temp>>4;
+j = temp & 0x0F;
+lcd_sendCommand(i);
+lcd_sendCommand(j);
+}
+}
+
+void lcd_init()
+{
+_lcd_Port(0x00);
+_delay((unsigned long)((20)*(16000000UL/4000.0)));
+lcd_sendCommand(0x03);
+_delay((unsigned long)((5)*(16000000UL/4000.0)));
+lcd_sendCommand(0x03);
+_delay((unsigned long)((11)*(16000000UL/4000.0)));
+lcd_sendCommand(0x03);
+
+lcd_sendCommand(0x02);
+lcd_sendCommand(0x02);
+lcd_sendCommand(0x08);
+lcd_sendCommand(0x00);
+lcd_sendCommand(0x0C);
+lcd_sendCommand(0x00);
+lcd_sendCommand(0x06);
+}
+
+void lcd_sendChar(const char a)
+{
+char temp,y;
+temp = a&0x0F;
+y = a&0xF0;
+LATAbits.LA4 = 1;
+_lcd_Port(y>>4);
+LATAbits.LA5 = 1;
+_delay((unsigned long)((40)*(16000000UL/4000000.0)));
+LATAbits.LA5 = 0;
+_lcd_Port(temp);
+LATAbits.LA5 = 1;
+_delay((unsigned long)((40)*(16000000UL/4000000.0)));
+LATAbits.LA5 = 0;
+}
+
+void lcd_sendString(const char * a)
+{
+int i;
+for(i=0;a[i]!='\0';i++)
+lcd_sendChar(a[i]);
+}
+
+void lcd_sendStringToPos(unsigned char x, unsigned char y, const char * charString)
+{
+lcd_setPosition(x, y);
+lcd_sendString(charString);
+}
+
+void lcd_sendInt(int number)
+{
+char displayString[10];
+itoa(displayString, number, 10);
+lcd_sendString(displayString);
+}
+
+void lcd_sendIntToPos(unsigned char x,unsigned char y, int number)
+{
+lcd_setPosition(x, y);
+lcd_sendInt(number);
+}
+
+void lcd_sendFloat(float number)
+{
+char * buffer;
+int status;
+buffer = ftoa(number, &status);
+lcd_sendString(buffer);
+}
+
+void lcd_sendFloatToPos(unsigned char x, unsigned char y, float number)
+{
+lcd_setPosition(x, y);
+lcd_sendFloat(number);
+}
+
+void lcd_sendUInt(unsigned int number)
+{
+char displayString[10];
+ultoa(displayString, number, 10);
+lcd_sendString(displayString);
+}
+
+void lcd_sendUIntToPos(unsigned char x, unsigned char y, unsigned int number)
+{
+lcd_setPosition(x, y);
+lcd_sendUInt(number);
+}
+
+void lcd_shiftRight()
+{
+lcd_sendCommand(0x01);
+lcd_sendCommand(0x0C);
+}
+
+void lcd_shiftLeft()
+{
+lcd_sendCommand(0x01);
+lcd_sendCommand(0x08);
+}
+
+void _lcd_Port(char a)
+{
+if(a & 1)
+LATAbits.LA0 = 1;
+else
+LATAbits.LA0 = 0;
+
+if(a & 2)
+LATAbits.LA1 = 1;
+else
+LATAbits.LA1 = 0;
+
+if(a & 4)
+LATAbits.LA2 = 1;
+else
+LATAbits.LA2 = 0;
+
+if(a & 8)
+LATAbits.LA3 = 1;
+else
+LATAbits.LA3 = 0;
+}

@@ -7122,120 +7122,190 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 308: void TMR0_SetInterruptHandler(void *InterruptHandler);
 [; ;tmr0.h: 326: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 344: void TMR0_DefaultInterruptHandler(void);
-"9 mcc_generated_files/ext_int.c
+"4 mcc_generated_files/../lcd.h
+[p n 520 ]
+"5
+[p n 752 ]
+[; ;stdlib.h: 7: typedef unsigned short wchar_t;
+[; ;stdlib.h: 15: typedef struct {
+[; ;stdlib.h: 16: int rem;
+[; ;stdlib.h: 17: int quot;
+[; ;stdlib.h: 18: } div_t;
+[; ;stdlib.h: 19: typedef struct {
+[; ;stdlib.h: 20: unsigned rem;
+[; ;stdlib.h: 21: unsigned quot;
+[; ;stdlib.h: 22: } udiv_t;
+[; ;stdlib.h: 23: typedef struct {
+[; ;stdlib.h: 24: long quot;
+[; ;stdlib.h: 25: long rem;
+[; ;stdlib.h: 26: } ldiv_t;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: unsigned long quot;
+[; ;stdlib.h: 29: unsigned long rem;
+[; ;stdlib.h: 30: } uldiv_t;
+[; ;stdlib.h: 53: extern double atof(const char *);
+[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 55: extern int atoi(const char *);
+[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 57: extern long atol(const char *);
+[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 60: extern int rand(void);
+[; ;stdlib.h: 61: extern void srand(unsigned int);
+[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 75: extern void * malloc(size_t);
+[; ;stdlib.h: 76: extern void free(void *);
+[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 86: extern int atexit(void (*)(void));
+[; ;stdlib.h: 87: extern char * getenv(const char *);
+[; ;stdlib.h: 88: extern char ** environ;
+[; ;stdlib.h: 89: extern int system(char *);
+[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 92: extern int abs(int);
+[; ;stdlib.h: 93: extern long labs(long);
+[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
+[; ;lcd.h: 28: void lcd_sendCommand(char a);
+[; ;lcd.h: 30: void lcd_clear();
+[; ;lcd.h: 32: void lcd_setPosition(unsigned char x, unsigned char y);
+[; ;lcd.h: 34: void lcd_init(void);
+[; ;lcd.h: 36: void lcd_sendChar(const char a);
+[; ;lcd.h: 38: void lcd_sendString(const char * a);
+[; ;lcd.h: 40: void lcd_sendStringToPos(unsigned char x, unsigned char y, const char * charString);
+[; ;lcd.h: 42: void lcd_sendInt(int number);
+[; ;lcd.h: 44: void lcd_sendIntToPos(unsigned char x, unsigned char y, int number);
+[; ;lcd.h: 46: void lcd_sendFloat(float number);
+[; ;lcd.h: 48: void lcd_sendFloatToPos(unsigned char x, unsigned char y, float number);
+[; ;lcd.h: 50: void lcd_sendUInt(unsigned int number);
+[; ;lcd.h: 52: void lcd_sendUIntToPos(unsigned char x, unsigned char y, unsigned int number);
+[; ;lcd.h: 54: void lcd_shiftRight();
+[; ;lcd.h: 56: void lcd_shiftLeft();
+[; ;lcd.h: 58: void _lcd_Port(char a);
+"12 mcc_generated_files/ext_int.c
 [v _reading `ui ~T0 @X0 1 e ]
-[; ;ext_int.c: 9: uint16_t reading;
-"10
+[; ;ext_int.c: 12: uint16_t reading;
+"13
 [v _result `f ~T0 @X0 1 e ]
-[; ;ext_int.c: 10: float result;
-"17
+[; ;ext_int.c: 13: float result;
+"18
 [v _INT0_InterruptHandler `*F7420 ~T0 @X0 1 e ]
-[; ;ext_int.c: 17: void (*INT0_InterruptHandler)(void);
-"22
-[v _INT0_ISR `(v ~T0 @X0 1 ef ]
+[; ;ext_int.c: 18: void (*INT0_InterruptHandler)(void);
 "23
+[v _INT0_ISR `(v ~T0 @X0 1 ef ]
+"24
 {
-[; ;ext_int.c: 22: void INT0_ISR(void)
-[; ;ext_int.c: 23: {
+[; ;ext_int.c: 23: void INT0_ISR(void)
+[; ;ext_int.c: 24: {
 [e :U _INT0_ISR ]
 [f ]
-[; ;ext_int.c: 25: TMR0_StopTimer();
-"25
-[e ( _TMR0_StopTimer ..  ]
-[; ;ext_int.c: 26: reading = TMR0_ReadTimer();
+[; ;ext_int.c: 26: TMR0_StopTimer();
 "26
+[e ( _TMR0_StopTimer ..  ]
+[; ;ext_int.c: 27: reading = TMR0_ReadTimer();
+"27
 [e = _reading ( _TMR0_ReadTimer ..  ]
-[; ;ext_int.c: 29: result = 494.5 * ((float)reading - 27) / 3.01004;
-"29
+[; ;ext_int.c: 30: result = 494.5 * ((float)reading - 27) / 3.01004;
+"30
 [e = _result -> / * .494.5 -> - -> _reading `f -> -> 27 `i `f `d .3.01004 `f ]
-[; ;ext_int.c: 32: printf("Capacitance: %0.2f pF (Count: %u)\r\n", result, reading);
-"32
+[; ;ext_int.c: 33: printf("Capacitance: %0.2f pF (Count: %u)\r\n", result, reading);
+"33
 [e ( _printf , , (. :s 1C -> _result `d _reading ]
-[; ;ext_int.c: 35: TMR0_Reload();
-"35
+[; ;ext_int.c: 36: TMR0_Reload();
+"36
 [e ( _TMR0_Reload ..  ]
-[; ;ext_int.c: 38: TMR0_StartTimer();
-"38
+[; ;ext_int.c: 39: TMR0_StartTimer();
+"39
 [e ( _TMR0_StartTimer ..  ]
-[; ;ext_int.c: 41: (INTCONbits.INT0IF = 0);
-"41
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;ext_int.c: 42: }
+[; ;ext_int.c: 42: (INTCONbits.INT0IF = 0);
 "42
-[e :UE 1082 ]
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+[; ;ext_int.c: 43: }
+"43
+[e :UE 1086 ]
 }
-"47
-[v _INT0_CallBack `(v ~T0 @X0 1 ef ]
 "48
+[v _INT0_CallBack `(v ~T0 @X0 1 ef ]
+"49
 {
-[; ;ext_int.c: 47: void INT0_CallBack(void)
-[; ;ext_int.c: 48: {
+[; ;ext_int.c: 48: void INT0_CallBack(void)
+[; ;ext_int.c: 49: {
 [e :U _INT0_CallBack ]
 [f ]
-[; ;ext_int.c: 50: if(INT0_InterruptHandler)
-"50
-[e $ ! != _INT0_InterruptHandler -> -> 0 `i `*F7420 1084  ]
-[; ;ext_int.c: 51: {
+[; ;ext_int.c: 51: if(INT0_InterruptHandler)
 "51
-{
-[; ;ext_int.c: 52: INT0_InterruptHandler();
+[e $ ! != _INT0_InterruptHandler -> -> 0 `i `*F7420 1088  ]
+[; ;ext_int.c: 52: {
 "52
-[e ( *U _INT0_InterruptHandler ..  ]
+{
+[; ;ext_int.c: 53: INT0_InterruptHandler();
 "53
-}
-[e :U 1084 ]
-[; ;ext_int.c: 53: }
-[; ;ext_int.c: 54: }
+[e ( *U _INT0_InterruptHandler ..  ]
 "54
-[e :UE 1083 ]
 }
-"59
+[e :U 1088 ]
+[; ;ext_int.c: 54: }
+[; ;ext_int.c: 55: }
+"55
+[e :UE 1087 ]
+}
+"60
 [v _INT0_SetInterruptHandler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;ext_int.c: 59: void INT0_SetInterruptHandler(void* InterruptHandler){
+[; ;ext_int.c: 60: void INT0_SetInterruptHandler(void* InterruptHandler){
 [e :U _INT0_SetInterruptHandler ]
 [v _InterruptHandler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;ext_int.c: 60: INT0_InterruptHandler = InterruptHandler;
-"60
-[e = _INT0_InterruptHandler -> _InterruptHandler `*F7420 ]
-[; ;ext_int.c: 61: }
+[; ;ext_int.c: 61: INT0_InterruptHandler = InterruptHandler;
 "61
-[e :UE 1085 ]
+[e = _INT0_InterruptHandler -> _InterruptHandler `*F7420 ]
+[; ;ext_int.c: 62: }
+"62
+[e :UE 1089 ]
 }
-"66
+"67
 [v _INT0_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 {
-[; ;ext_int.c: 66: void INT0_DefaultInterruptHandler(void){
+[; ;ext_int.c: 67: void INT0_DefaultInterruptHandler(void){
 [e :U _INT0_DefaultInterruptHandler ]
 [f ]
-[; ;ext_int.c: 69: }
-"69
-[e :UE 1086 ]
+[; ;ext_int.c: 70: }
+"70
+[e :UE 1090 ]
 }
-"79
-[v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
 "80
+[v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
+"81
 {
-[; ;ext_int.c: 79: void EXT_INT_Initialize(void)
-[; ;ext_int.c: 80: {
+[; ;ext_int.c: 80: void EXT_INT_Initialize(void)
+[; ;ext_int.c: 81: {
 [e :U _EXT_INT_Initialize ]
 [f ]
-[; ;ext_int.c: 88: (INTCONbits.INT0IF = 0);
-"88
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;ext_int.c: 89: (INTCON2bits.INTEDG0 = 0);
+[; ;ext_int.c: 89: (INTCONbits.INT0IF = 0);
 "89
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+[; ;ext_int.c: 90: (INTCON2bits.INTEDG0 = 0);
+"90
 [e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;ext_int.c: 91: INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
-"91
-[e ( _INT0_SetInterruptHandler (1 -> &U _INT0_DefaultInterruptHandler `*v ]
-[; ;ext_int.c: 92: (INTCONbits.INT0IE = 1);
+[; ;ext_int.c: 92: INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
 "92
+[e ( _INT0_SetInterruptHandler (1 -> &U _INT0_DefaultInterruptHandler `*v ]
+[; ;ext_int.c: 93: (INTCONbits.INT0IE = 1);
+"93
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;ext_int.c: 98: }
-"98
-[e :UE 1087 ]
+[; ;ext_int.c: 99: }
+"99
+[e :UE 1091 ]
 }
 [p f _printf 8463364 ]
 [a 1C 67 97 112 97 99 105 116 97 110 99 101 58 32 37 48 46 50 102 32 112 70 32 40 67 111 117 110 116 58 32 37 117 41 13 10 0 ]
