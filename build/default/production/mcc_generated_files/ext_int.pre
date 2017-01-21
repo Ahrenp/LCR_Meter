@@ -9118,7 +9118,9 @@ TMR0_StopTimer();
 reading = TMR0_ReadTimer();
 
 
-result = 494.5 * ((float)reading - 27) / 3.01004;
+result = 35 * ((float)reading - 27) / 3.01004;
+
+
 
 
 printf("Capacitance: %0.2f pF (Count: %u)\r\n", result, reading);
@@ -9133,7 +9135,7 @@ TMR0_StartTimer();
 (INTCONbits.INT0IF = 0);
 }
 
-# 48
+# 50
 void INT0_CallBack(void)
 {
 
@@ -9143,28 +9145,28 @@ INT0_InterruptHandler();
 }
 }
 
-# 60
+# 62
 void INT0_SetInterruptHandler(void* InterruptHandler){
 INT0_InterruptHandler = InterruptHandler;
 }
 
-# 67
+# 69
 void INT0_DefaultInterruptHandler(void){
 
 
 }
 
-# 80
+# 82
 void EXT_INT_Initialize(void)
 {
 
-# 89
+# 91
 (INTCONbits.INT0IF = 0);
 (INTCON2bits.INTEDG0 = 0);
 
 INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
 (INTCONbits.INT0IE = 1);
 
-# 99
+# 101
 }
 

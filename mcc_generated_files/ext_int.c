@@ -27,7 +27,9 @@ void INT0_ISR(void)
     reading = TMR0_ReadTimer();
     
     //Compute capacitance reading in pF
-    result = 494.5 * ((float)reading - 27) / 3.01004;
+    result = 35 * ((float)reading - 27) / 3.01004;
+    
+
     
     //Print capacitance reading
     printf("Capacitance: %0.2f pF (Count: %u)\r\n", result, reading);

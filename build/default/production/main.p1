@@ -20,12 +20,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcd_init `(v ~T0 @X0 0 ef ]
 "30
 [v _lcd_clear `(v ~T0 @X0 0 ef ]
-"194 C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdio.h
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "5 main.c
 [v _result `f ~T0 @X0 0 e ]
-"40 lcd.h
-[v _lcd_sendStringToPos `(v ~T0 @X0 0 ef3`uc`uc`*Cuc ]
+"194 C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdio.h
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+"38 lcd.h
+[v _lcd_sendString `(v ~T0 @X0 0 ef1`*Cuc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7191,55 +7191,103 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 58: void _lcd_Port(char a);
 [; ;main.c: 4: extern uint16_t reading;
 [; ;main.c: 5: extern float result;
-"7 main.c
-[v _main `(v ~T0 @X0 1 ef ]
+"6 main.c
+[v _units `uc ~T0 @X0 -> 2 `i e ]
+[i _units
+:U ..
+-> 112 `c
+-> 70 `c
+..
+]
+[; ;main.c: 6: char units[2] = "pF";
 "8
+[v _main `(v ~T0 @X0 1 ef ]
+"9
 {
-[; ;main.c: 7: void main(void)
-[; ;main.c: 8: {
+[; ;main.c: 8: void main(void)
+[; ;main.c: 9: {
 [e :U _main ]
 [f ]
-[; ;main.c: 10: SYSTEM_Initialize();
-"10
+[; ;main.c: 11: SYSTEM_Initialize();
+"11
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 29: (INTCONbits.GIE = 1);
-"29
+[; ;main.c: 30: (INTCONbits.GIE = 1);
+"30
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 32: (INTCONbits.PEIE = 1);
-"32
+[; ;main.c: 33: (INTCONbits.PEIE = 1);
+"33
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 40: lcd_init();
-"40
-[e ( _lcd_init ..  ]
-[; ;main.c: 41: lcd_clear();
+[; ;main.c: 41: lcd_init();
 "41
+[e ( _lcd_init ..  ]
+[; ;main.c: 42: lcd_clear();
+"42
 [e ( _lcd_clear ..  ]
-[; ;main.c: 43: while (1)
-"43
-[e :U 1088 ]
-[; ;main.c: 44: {
+[; ;main.c: 44: while (1)
 "44
+[e :U 1088 ]
+[; ;main.c: 45: {
+"45
 {
-"46
-[v _cap_string `uc ~T0 @X0 -> 16 `i a ]
-[; ;main.c: 46: char cap_string[16];
-[; ;main.c: 47: sprintf(cap_string, "C:%12.0fpF", result);
 "47
-[e ( _sprintf (1 , (. , &U _cap_string :s 1C -> _result `d ]
-[; ;main.c: 48: lcd_sendStringToPos(1, 1, cap_string);
-"48
-[e ( _lcd_sendStringToPos (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _cap_string `*Cuc ]
-"49
+[v _cap_string `uc ~T0 @X0 -> 16 `i a ]
+[; ;main.c: 47: char cap_string[16];
+[; ;main.c: 50: if (result >= 1000000.0)
+"50
+[e $ ! >= -> _result `d .1000000.0 1090  ]
+[; ;main.c: 51: {
+"51
+{
+[; ;main.c: 52: sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
+"52
+[e ( _sprintf (1 , (. , &U _cap_string :s 1C / -> _result `d .1000000.0 ]
+"53
+}
+[; ;main.c: 53: }
+[e $U 1091  ]
+"54
+[e :U 1090 ]
+[; ;main.c: 54: else if (result < 1000000 && result >= 1000.0)
+[e $ ! && < _result -> -> 1000000 `l `f >= -> _result `d .1000.0 1092  ]
+[; ;main.c: 55: {
+"55
+{
+[; ;main.c: 56: sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
+"56
+[e ( _sprintf (1 , (. , &U _cap_string :s 2C / -> _result `d .1000.0 ]
+"57
+}
+[; ;main.c: 57: }
+[e $U 1093  ]
+"58
+[e :U 1092 ]
+[; ;main.c: 58: else
+[; ;main.c: 59: {
+"59
+{
+[; ;main.c: 60: sprintf(cap_string, "C=%12.0fpF", result);
+"60
+[e ( _sprintf (1 , (. , &U _cap_string :s 3C -> _result `d ]
+"61
+}
+[e :U 1093 ]
+[e :U 1091 ]
+[; ;main.c: 61: }
+[; ;main.c: 63: lcd_sendString(cap_string);
+"63
+[e ( _lcd_sendString (1 -> &U _cap_string `*Cuc ]
+"64
 }
 [e :U 1087 ]
-"43
+"44
 [e $U 1088  ]
 [e :U 1089 ]
-[; ;main.c: 49: }
-[; ;main.c: 50: }
-"50
+[; ;main.c: 64: }
+[; ;main.c: 65: }
+"65
 [e :UE 1086 ]
 }
 [p f _sprintf 8495104 ]
-[a 1C 67 58 37 49 50 46 48 102 112 70 0 ]
-
+[a 1C 67 61 37 49 50 46 54 102 117 70 0 ]
+[a 3C 67 61 37 49 50 46 48 102 112 70 0 ]
+[a 2C 67 61 37 49 50 46 51 102 110 70 0 ]

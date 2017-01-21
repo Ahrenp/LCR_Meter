@@ -3,6 +3,7 @@
 
 extern uint16_t reading;
 extern float result;
+char units[2] = "pF";
 
 void main(void)
 {
@@ -41,10 +42,24 @@ void main(void)
     lcd_clear();
     
     while (1)
-    {
+    {        
         //Update display
         char cap_string[16];
-        sprintf(cap_string, "C:%12.0fpF", result);
-        lcd_sendStringToPos(1, 1, cap_string);
+        
+        //Units logic
+        if (result >= 1000000.0)
+        {
+            sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
+        }
+        else if (result < 1000000 && result >= 1000.0)
+        {
+            sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
+        }
+        else
+        {
+            sprintf(cap_string, "C=%12.0fpF", result);
+        }
+
+        lcd_sendString(cap_string);
     }
 }
