@@ -64,7 +64,7 @@ void main(void)
         {
             sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
         }
-        else if (result < 1000 && result > 0)
+        else
         {
             sprintf(cap_string, "C=%12.0fpF", result);
         }

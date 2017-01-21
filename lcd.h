@@ -19,8 +19,8 @@
 
 //Latches for control pins - enable, read/write, register select
 //Should be set to output in pin configuration
-#define RS LATAbits.LA4
-#define EN LATAbits.LA5
+#define RS LATAbits.LA5
+#define EN LATAbits.LA4
 
 //Digit buffer for integer send functions
 #define DIGIT_BUFFER 10
