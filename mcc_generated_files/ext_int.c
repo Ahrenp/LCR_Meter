@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "ext_int.h"
 #include "tmr0.h"
+#include "pin_manager.h"
 
 #define MIN_COUNTS 1000
 #define MAX_COUNTS 60000
@@ -14,6 +15,15 @@ const uint8_t RSET_BIT[] = {2, 3, 3, 4, 5};
 const float cal_current[] = {0.50, 2.98, 108.43, 4525.0, 112000.0};
 
 //***User Area Begin->code: Add External Interrupt handler specific headers 
+void SetRange(uint8_t new_range)
+{
+    //Reset all range bits
+    LATC |= (1 << R1_BIT[0]) | (1 << R1_BIT[1]) | (1 << R1_BIT[2]) | (1 << R1_BIT[3]) | (1 << R1_BIT[4]);
+    LATB |= (1 << RSET_BIT[0]) | (1 << RSET_BIT[1]) | (1 << RSET_BIT[3]) | (1 << RSET_BIT[4]);
+
+    LATC &= ~(1 << R1_BIT[new_range - 1]);
+    LATB &= ~(1 << RSET_BIT[new_range - 1]);
+}
 
 //***User Area End->code: Add External Interrupt handler specific headers
 uint16_t reading;
@@ -43,12 +53,7 @@ void INT1_ISR(void)
         range -= 3;
     }
     
-    //Reset all range bits
-    LATC |= (1 << R1_BIT[0]) | (1 << R1_BIT[1]) | (1 << R1_BIT[2]) | (1 << R1_BIT[3]) | (1 << R1_BIT[4]);
-    LATB |= (1 << RSET_BIT[0]) | (1 << RSET_BIT[1]) | (1 << RSET_BIT[3]) | (1 << RSET_BIT[4]);
-
-    LATC &= ~(1 << R1_BIT[range - 1]);
-    LATB &= ~(1 << RSET_BIT[range - 1]);
+    SetRange(range);
     
     //***User Area End->code***
         
@@ -89,7 +94,10 @@ void INT0_ISR(void)
     //Stop microsecond timer and get reading
     TMR0_StopTimer();
     reading = TMR0_ReadTimer();
-
+    
+    //Set UC high to drain capacitor
+    UC_SetHigh();
+    
     //Compute capacitance reading in pF
     //Current in uA
     result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
@@ -97,10 +105,17 @@ void INT0_ISR(void)
     //Print capacitance reading
     printf("Capacitance: %0.2f pF (Count: %u) - Range: %d\r\n", result, reading, range);
     
+    if (reading < 1000 && range > 2)
+    {
+        range -= 1;
+        SetRange(range);
+    }
+    
     //Reload the timer with inital values for its specified (60ms) range
     TMR0_Reload();
     
-    //Restart timer
+    //Restart timer, set UC low to recharge capacitor
+    UC_SetLow();
     TMR0_StartTimer();
     
     //Clear interrupt flag

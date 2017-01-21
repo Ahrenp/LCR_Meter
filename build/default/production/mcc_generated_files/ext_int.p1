@@ -1,10 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F7420 `(v ~T0 @X0 0 tf ]
-[v F7431 `(v ~T0 @X0 0 tf ]
 "7601 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
 "7469
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+[v F7420 `(v ~T0 @X0 0 tf ]
+[v F7431 `(v ~T0 @X0 0 tf ]
 "16460
 [s S1046 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1046 . INT1IF INT2IF . INT1IE INT2IE . INT1IP INT2IP ]
@@ -20,6 +20,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TMR0_StopTimer `(v ~T0 @X0 0 ef ]
 "196
 [v _TMR0_ReadTimer `(ui ~T0 @X0 0 ef ]
+"7607 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
+[s S462 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S462 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"7617
+[s S463 :1 `uc 1 ]
+[n S463 . LC0 ]
+"7620
+[s S464 :1 `uc 1 :1 `uc 1 ]
+[n S464 . . LC1 ]
+"7624
+[s S465 :2 `uc 1 :1 `uc 1 ]
+[n S465 . . LC2 ]
+"7628
+[s S466 :3 `uc 1 :1 `uc 1 ]
+[n S466 . . LC3 ]
+"7632
+[s S467 :4 `uc 1 :1 `uc 1 ]
+[n S467 . . LC4 ]
+"7636
+[s S468 :5 `uc 1 :1 `uc 1 ]
+[n S468 . . LC5 ]
+"7640
+[s S469 :6 `uc 1 :1 `uc 1 ]
+[n S469 . . LC6 ]
+"7644
+[s S470 :7 `uc 1 :1 `uc 1 ]
+[n S470 . . LC7 ]
+"7606
+[u S461 `S462 1 `S463 1 `S464 1 `S465 1 `S466 1 `S467 1 `S468 1 `S469 1 `S470 1 ]
+[n S461 . . . . . . . . . . ]
+"7649
+[v _LATCbits `VS461 ~T0 @X0 0 e@3979 ]
 "195 C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "271 mcc_generated_files/tmr0.h
@@ -7143,7 +7175,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 308: void TMR0_SetInterruptHandler(void *InterruptHandler);
 [; ;tmr0.h: 326: extern void (*TMR0_InterruptHandler)(void);
 [; ;tmr0.h: 344: void TMR0_DefaultInterruptHandler(void);
-"12 mcc_generated_files/ext_int.c
+[; ;pin_manager.h: 333: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 345: void PIN_MANAGER_IOC(void);
+"13 mcc_generated_files/ext_int.c
 [v _R1_BIT `Cuc ~T0 @X0 -> 0 `x e ]
 [i _R1_BIT
 :U ..
@@ -7154,8 +7188,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 4 `i `uc
 ..
 ]
-[; ;ext_int.c: 12: const uint8_t R1_BIT[] = {0, 1, 2, 3, 4};
-"13
+[; ;ext_int.c: 13: const uint8_t R1_BIT[] = {0, 1, 2, 3, 4};
+"14
 [v _RSET_BIT `Cuc ~T0 @X0 -> 0 `x e ]
 [i _RSET_BIT
 :U ..
@@ -7166,8 +7200,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 5 `i `uc
 ..
 ]
-[; ;ext_int.c: 13: const uint8_t RSET_BIT[] = {2, 3, 3, 4, 5};
-"14
+[; ;ext_int.c: 14: const uint8_t RSET_BIT[] = {2, 3, 3, 4, 5};
+"15
 [v _cal_current `Cf ~T0 @X0 -> 0 `x e ]
 [i _cal_current
 :U ..
@@ -7178,247 +7212,295 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> .112000.0 `f
 ..
 ]
-[; ;ext_int.c: 14: const float cal_current[] = {0.50, 2.98, 108.43, 4525.0, 112000.0};
+[; ;ext_int.c: 15: const float cal_current[] = {0.50, 2.98, 108.43, 4525.0, 112000.0};
+"18
+[v _SetRange `(v ~T0 @X0 1 ef1`uc ]
 "19
-[v _reading `ui ~T0 @X0 1 e ]
-[; ;ext_int.c: 19: uint16_t reading;
-"20
-[v _result `f ~T0 @X0 1 e ]
-[; ;ext_int.c: 20: float result;
+{
+[; ;ext_int.c: 18: void SetRange(uint8_t new_range)
+[; ;ext_int.c: 19: {
+[e :U _SetRange ]
+"18
+[v _new_range `uc ~T0 @X0 1 r1 ]
+"19
+[f ]
+[; ;ext_int.c: 21: LATC |= (1 << R1_BIT[0]) | (1 << R1_BIT[1]) | (1 << R1_BIT[2]) | (1 << R1_BIT[3]) | (1 << R1_BIT[4]);
+"21
+[e =| _LATC -> | | | | << -> 1 `i *U + &U _R1_BIT * -> -> -> 0 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 1 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 2 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 3 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 4 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux `uc ]
+[; ;ext_int.c: 22: LATB |= (1 << RSET_BIT[0]) | (1 << RSET_BIT[1]) | (1 << RSET_BIT[3]) | (1 << RSET_BIT[4]);
 "22
+[e =| _LATB -> | | | << -> 1 `i *U + &U _RSET_BIT * -> -> -> 0 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux << -> 1 `i *U + &U _RSET_BIT * -> -> -> 1 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux << -> 1 `i *U + &U _RSET_BIT * -> -> -> 3 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux << -> 1 `i *U + &U _RSET_BIT * -> -> -> 4 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux `uc ]
+[; ;ext_int.c: 24: LATC &= ~(1 << R1_BIT[new_range - 1]);
+"24
+[e =& _LATC -> ~ << -> 1 `i *U + &U _R1_BIT * -> -> - -> _new_range `i -> 1 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux `uc ]
+[; ;ext_int.c: 25: LATB &= ~(1 << RSET_BIT[new_range - 1]);
+"25
+[e =& _LATB -> ~ << -> 1 `i *U + &U _RSET_BIT * -> -> - -> _new_range `i -> 1 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux `uc ]
+[; ;ext_int.c: 26: }
+"26
+[e :UE 1082 ]
+}
+"29
+[v _reading `ui ~T0 @X0 1 e ]
+[; ;ext_int.c: 29: uint16_t reading;
+"30
+[v _result `f ~T0 @X0 1 e ]
+[; ;ext_int.c: 30: float result;
+"32
 [v _delta_range `c ~T0 @X0 1 e ]
 [i _delta_range
 -> -> 0 `i `c
 ]
-[; ;ext_int.c: 22: int8_t delta_range = 0;
-"23
+[; ;ext_int.c: 32: int8_t delta_range = 0;
+"33
 [v _range `uc ~T0 @X0 1 e ]
 [i _range
 -> -> 2 `i `uc
 ]
-[; ;ext_int.c: 23: uint8_t range = 2;
-"29
+[; ;ext_int.c: 33: uint8_t range = 2;
+"39
 [v _INT1_InterruptHandler `*F7420 ~T0 @X0 1 e ]
-[; ;ext_int.c: 29: void (*INT1_InterruptHandler)(void);
-"30
+[; ;ext_int.c: 39: void (*INT1_InterruptHandler)(void);
+"40
 [v _INT0_InterruptHandler `*F7431 ~T0 @X0 1 e ]
-[; ;ext_int.c: 30: void (*INT0_InterruptHandler)(void);
-"34
+[; ;ext_int.c: 40: void (*INT0_InterruptHandler)(void);
+"44
 [v _INT1_ISR `(v ~T0 @X0 1 ef ]
-"35
+"45
 {
-[; ;ext_int.c: 34: void INT1_ISR(void)
-[; ;ext_int.c: 35: {
+[; ;ext_int.c: 44: void INT1_ISR(void)
+[; ;ext_int.c: 45: {
 [e :U _INT1_ISR ]
 [f ]
-[; ;ext_int.c: 37: if (range < 5)
-"37
-[e $ ! < -> _range `i -> 5 `i 1083  ]
-[; ;ext_int.c: 38: {
-"38
-{
-[; ;ext_int.c: 39: range += 1;
-"39
-[e =+ _range -> -> 1 `i `uc ]
-"40
-}
-[; ;ext_int.c: 40: }
-[e $U 1084  ]
-"41
-[e :U 1083 ]
-[; ;ext_int.c: 41: else
-[; ;ext_int.c: 42: {
-"42
-{
-[; ;ext_int.c: 43: range -= 3;
-"43
-[e =- _range -> -> 3 `i `uc ]
-"44
-}
-[e :U 1084 ]
-[; ;ext_int.c: 44: }
-[; ;ext_int.c: 47: LATC |= (1 << R1_BIT[0]) | (1 << R1_BIT[1]) | (1 << R1_BIT[2]) | (1 << R1_BIT[3]) | (1 << R1_BIT[4]);
+[; ;ext_int.c: 47: if (range < 5)
 "47
-[e =| _LATC -> | | | | << -> 1 `i *U + &U _R1_BIT * -> -> -> 0 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 1 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 2 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 3 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux << -> 1 `i *U + &U _R1_BIT * -> -> -> 4 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux `uc ]
-[; ;ext_int.c: 48: LATB |= (1 << RSET_BIT[0]) | (1 << RSET_BIT[1]) | (1 << RSET_BIT[3]) | (1 << RSET_BIT[4]);
+[e $ ! < -> _range `i -> 5 `i 1084  ]
+[; ;ext_int.c: 48: {
 "48
-[e =| _LATB -> | | | << -> 1 `i *U + &U _RSET_BIT * -> -> -> 0 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux << -> 1 `i *U + &U _RSET_BIT * -> -> -> 1 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux << -> 1 `i *U + &U _RSET_BIT * -> -> -> 3 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux << -> 1 `i *U + &U _RSET_BIT * -> -> -> 4 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux `uc ]
-[; ;ext_int.c: 50: LATC &= ~(1 << R1_BIT[range - 1]);
-"50
-[e =& _LATC -> ~ << -> 1 `i *U + &U _R1_BIT * -> -> - -> _range `i -> 1 `i `ui `ux -> -> # *U &U _R1_BIT `ui `ux `uc ]
-[; ;ext_int.c: 51: LATB &= ~(1 << RSET_BIT[range - 1]);
-"51
-[e =& _LATB -> ~ << -> 1 `i *U + &U _RSET_BIT * -> -> - -> _range `i -> 1 `i `ui `ux -> -> # *U &U _RSET_BIT `ui `ux `uc ]
-[; ;ext_int.c: 55: (INTCON3bits.INT1IF = 0);
-"55
-[e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
-[; ;ext_int.c: 56: }
-"56
-[e :UE 1082 ]
-}
-"61
-[v _INT1_CallBack `(v ~T0 @X0 1 ef ]
-"62
 {
-[; ;ext_int.c: 61: void INT1_CallBack(void)
-[; ;ext_int.c: 62: {
+[; ;ext_int.c: 49: range += 1;
+"49
+[e =+ _range -> -> 1 `i `uc ]
+"50
+}
+[; ;ext_int.c: 50: }
+[e $U 1085  ]
+"51
+[e :U 1084 ]
+[; ;ext_int.c: 51: else
+[; ;ext_int.c: 52: {
+"52
+{
+[; ;ext_int.c: 53: range -= 3;
+"53
+[e =- _range -> -> 3 `i `uc ]
+"54
+}
+[e :U 1085 ]
+[; ;ext_int.c: 54: }
+[; ;ext_int.c: 56: SetRange(range);
+"56
+[e ( _SetRange (1 _range ]
+[; ;ext_int.c: 60: (INTCON3bits.INT1IF = 0);
+"60
+[e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
+[; ;ext_int.c: 61: }
+"61
+[e :UE 1083 ]
+}
+"66
+[v _INT1_CallBack `(v ~T0 @X0 1 ef ]
+"67
+{
+[; ;ext_int.c: 66: void INT1_CallBack(void)
+[; ;ext_int.c: 67: {
 [e :U _INT1_CallBack ]
 [f ]
-[; ;ext_int.c: 64: if(INT1_InterruptHandler)
-"64
-[e $ ! != _INT1_InterruptHandler -> -> 0 `i `*F7420 1086  ]
-[; ;ext_int.c: 65: {
-"65
+[; ;ext_int.c: 69: if(INT1_InterruptHandler)
+"69
+[e $ ! != _INT1_InterruptHandler -> -> 0 `i `*F7420 1087  ]
+[; ;ext_int.c: 70: {
+"70
 {
-"67
+"72
 }
-[e :U 1086 ]
-[; ;ext_int.c: 67: }
-[; ;ext_int.c: 68: }
-"68
-[e :UE 1085 ]
-}
+[e :U 1087 ]
+[; ;ext_int.c: 72: }
+[; ;ext_int.c: 73: }
 "73
+[e :UE 1086 ]
+}
+"78
 [v _INT1_SetInterruptHandler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;ext_int.c: 73: void INT1_SetInterruptHandler(void* InterruptHandler){
+[; ;ext_int.c: 78: void INT1_SetInterruptHandler(void* InterruptHandler){
 [e :U _INT1_SetInterruptHandler ]
 [v _InterruptHandler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;ext_int.c: 74: INT1_InterruptHandler = InterruptHandler;
-"74
+[; ;ext_int.c: 79: INT1_InterruptHandler = InterruptHandler;
+"79
 [e = _INT1_InterruptHandler -> _InterruptHandler `*F7420 ]
-[; ;ext_int.c: 75: }
-"75
-[e :UE 1087 ]
-}
+[; ;ext_int.c: 80: }
 "80
-[v _INT1_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
-{
-[; ;ext_int.c: 80: void INT1_DefaultInterruptHandler(void){
-[e :U _INT1_DefaultInterruptHandler ]
-[f ]
-[; ;ext_int.c: 83: }
-"83
 [e :UE 1088 ]
 }
-"87
-[v _INT0_ISR `(v ~T0 @X0 1 ef ]
-"88
+"85
+[v _INT1_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 {
-[; ;ext_int.c: 87: void INT0_ISR(void)
-[; ;ext_int.c: 88: {
-[e :U _INT0_ISR ]
+[; ;ext_int.c: 85: void INT1_DefaultInterruptHandler(void){
+[e :U _INT1_DefaultInterruptHandler ]
 [f ]
-[; ;ext_int.c: 90: TMR0_StopTimer();
-"90
-[e ( _TMR0_StopTimer ..  ]
-[; ;ext_int.c: 91: reading = TMR0_ReadTimer();
-"91
-[e = _reading ( _TMR0_ReadTimer ..  ]
-[; ;ext_int.c: 95: result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
-"95
-[e = _result -> / -> * *U + &U _cal_current * -> -> - -> _range `i -> 1 `i `ui `ux -> -> # *U &U _cal_current `ui `ux - -> _reading `f -> -> 27 `i `f `d .3.01004 `f ]
-[; ;ext_int.c: 98: printf("Capacitance: %0.2f pF (Count: %u) - Range: %d\r\n", result, reading, range);
-"98
-[e ( _printf , , , (. :s 1C -> _result `d _reading -> _range `i ]
-[; ;ext_int.c: 101: TMR0_Reload();
-"101
-[e ( _TMR0_Reload ..  ]
-[; ;ext_int.c: 104: TMR0_StartTimer();
-"104
-[e ( _TMR0_StartTimer ..  ]
-[; ;ext_int.c: 107: (INTCONbits.INT0IF = 0);
-"107
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;ext_int.c: 108: }
-"108
+[; ;ext_int.c: 88: }
+"88
 [e :UE 1089 ]
 }
-"113
-[v _INT0_CallBack `(v ~T0 @X0 1 ef ]
-"114
+"92
+[v _INT0_ISR `(v ~T0 @X0 1 ef ]
+"93
 {
-[; ;ext_int.c: 113: void INT0_CallBack(void)
-[; ;ext_int.c: 114: {
-[e :U _INT0_CallBack ]
+[; ;ext_int.c: 92: void INT0_ISR(void)
+[; ;ext_int.c: 93: {
+[e :U _INT0_ISR ]
 [f ]
-[; ;ext_int.c: 116: if(INT0_InterruptHandler)
-"116
-[e $ ! != _INT0_InterruptHandler -> -> 0 `i `*F7431 1091  ]
-[; ;ext_int.c: 117: {
-"117
+[; ;ext_int.c: 95: TMR0_StopTimer();
+"95
+[e ( _TMR0_StopTimer ..  ]
+[; ;ext_int.c: 96: reading = TMR0_ReadTimer();
+"96
+[e = _reading ( _TMR0_ReadTimer ..  ]
+[; ;ext_int.c: 99: do { LATCbits.LATC7 = 1; } while(0);
+"99
+[e :U 1093 ]
 {
-[; ;ext_int.c: 118: INT0_InterruptHandler();
-"118
-[e ( *U _INT0_InterruptHandler ..  ]
-"119
+[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
 }
-[e :U 1091 ]
-[; ;ext_int.c: 119: }
-[; ;ext_int.c: 120: }
-"120
+[e :U 1092 ]
+[; ;ext_int.c: 103: result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
+"103
+[e = _result -> / -> * *U + &U _cal_current * -> -> - -> _range `i -> 1 `i `ui `ux -> -> # *U &U _cal_current `ui `ux - -> _reading `f -> -> 27 `i `f `d .3.01004 `f ]
+[; ;ext_int.c: 106: printf("Capacitance: %0.2f pF (Count: %u) - Range: %d\r\n", result, reading, range);
+"106
+[e ( _printf , , , (. :s 1C -> _result `d _reading -> _range `i ]
+[; ;ext_int.c: 108: if (reading < 1000 && range > 2)
+"108
+[e $ ! && < _reading -> -> 1000 `i `ui > -> _range `i -> 2 `i 1094  ]
+[; ;ext_int.c: 109: {
+"109
+{
+[; ;ext_int.c: 110: range -= 1;
+"110
+[e =- _range -> -> 1 `i `uc ]
+[; ;ext_int.c: 111: SetRange(range);
+"111
+[e ( _SetRange (1 _range ]
+"112
+}
+[e :U 1094 ]
+[; ;ext_int.c: 112: }
+[; ;ext_int.c: 115: TMR0_Reload();
+"115
+[e ( _TMR0_Reload ..  ]
+[; ;ext_int.c: 118: do { LATCbits.LATC7 = 0; } while(0);
+"118
+[e :U 1097 ]
+{
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+}
+[e :U 1096 ]
+[; ;ext_int.c: 119: TMR0_StartTimer();
+"119
+[e ( _TMR0_StartTimer ..  ]
+[; ;ext_int.c: 122: (INTCONbits.INT0IF = 0);
+"122
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+[; ;ext_int.c: 123: }
+"123
 [e :UE 1090 ]
 }
-"125
+"128
+[v _INT0_CallBack `(v ~T0 @X0 1 ef ]
+"129
+{
+[; ;ext_int.c: 128: void INT0_CallBack(void)
+[; ;ext_int.c: 129: {
+[e :U _INT0_CallBack ]
+[f ]
+[; ;ext_int.c: 131: if(INT0_InterruptHandler)
+"131
+[e $ ! != _INT0_InterruptHandler -> -> 0 `i `*F7431 1099  ]
+[; ;ext_int.c: 132: {
+"132
+{
+[; ;ext_int.c: 133: INT0_InterruptHandler();
+"133
+[e ( *U _INT0_InterruptHandler ..  ]
+"134
+}
+[e :U 1099 ]
+[; ;ext_int.c: 134: }
+[; ;ext_int.c: 135: }
+"135
+[e :UE 1098 ]
+}
+"140
 [v _INT0_SetInterruptHandler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;ext_int.c: 125: void INT0_SetInterruptHandler(void* InterruptHandler){
+[; ;ext_int.c: 140: void INT0_SetInterruptHandler(void* InterruptHandler){
 [e :U _INT0_SetInterruptHandler ]
 [v _InterruptHandler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;ext_int.c: 126: INT0_InterruptHandler = InterruptHandler;
-"126
+[; ;ext_int.c: 141: INT0_InterruptHandler = InterruptHandler;
+"141
 [e = _INT0_InterruptHandler -> _InterruptHandler `*F7431 ]
-[; ;ext_int.c: 127: }
-"127
-[e :UE 1092 ]
+[; ;ext_int.c: 142: }
+"142
+[e :UE 1100 ]
 }
-"132
+"147
 [v _INT0_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 {
-[; ;ext_int.c: 132: void INT0_DefaultInterruptHandler(void){
+[; ;ext_int.c: 147: void INT0_DefaultInterruptHandler(void){
 [e :U _INT0_DefaultInterruptHandler ]
 [f ]
-[; ;ext_int.c: 135: }
-"135
-[e :UE 1093 ]
+[; ;ext_int.c: 150: }
+"150
+[e :UE 1101 ]
 }
-"146
+"161
 [v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
-"147
+"162
 {
-[; ;ext_int.c: 146: void EXT_INT_Initialize(void)
-[; ;ext_int.c: 147: {
+[; ;ext_int.c: 161: void EXT_INT_Initialize(void)
+[; ;ext_int.c: 162: {
 [e :U _EXT_INT_Initialize ]
 [f ]
-[; ;ext_int.c: 155: (INTCON3bits.INT1IF = 0);
-"155
-[e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
-[; ;ext_int.c: 156: (INTCON2bits.INTEDG1 = 0);
-"156
-[e = . . _INTCON2bits 1 5 -> -> 0 `i `uc ]
-[; ;ext_int.c: 158: INT1_SetInterruptHandler(INT1_DefaultInterruptHandler);
-"158
-[e ( _INT1_SetInterruptHandler (1 -> &U _INT1_DefaultInterruptHandler `*v ]
-[; ;ext_int.c: 159: (INTCON3bits.INT1IE = 1);
-"159
-[e = . . _INTCON3bits 0 3 -> -> 1 `i `uc ]
-[; ;ext_int.c: 170: (INTCONbits.INT0IF = 0);
+[; ;ext_int.c: 170: (INTCON3bits.INT1IF = 0);
 "170
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;ext_int.c: 171: (INTCON2bits.INTEDG0 = 0);
+[e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
+[; ;ext_int.c: 171: (INTCON2bits.INTEDG1 = 0);
 "171
-[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;ext_int.c: 173: INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
+[e = . . _INTCON2bits 1 5 -> -> 0 `i `uc ]
+[; ;ext_int.c: 173: INT1_SetInterruptHandler(INT1_DefaultInterruptHandler);
 "173
-[e ( _INT0_SetInterruptHandler (1 -> &U _INT0_DefaultInterruptHandler `*v ]
-[; ;ext_int.c: 174: (INTCONbits.INT0IE = 1);
+[e ( _INT1_SetInterruptHandler (1 -> &U _INT1_DefaultInterruptHandler `*v ]
+[; ;ext_int.c: 174: (INTCON3bits.INT1IE = 1);
 "174
+[e = . . _INTCON3bits 0 3 -> -> 1 `i `uc ]
+[; ;ext_int.c: 185: (INTCONbits.INT0IF = 0);
+"185
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+[; ;ext_int.c: 186: (INTCON2bits.INTEDG0 = 0);
+"186
+[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
+[; ;ext_int.c: 188: INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
+"188
+[e ( _INT0_SetInterruptHandler (1 -> &U _INT0_DefaultInterruptHandler `*v ]
+[; ;ext_int.c: 189: (INTCONbits.INT0IE = 1);
+"189
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;ext_int.c: 180: }
-"180
-[e :UE 1094 ]
+[; ;ext_int.c: 195: }
+"195
+[e :UE 1102 ]
 }
 [p f _printf 8463492 ]
 [a 1C 67 97 112 97 99 105 116 97 110 99 101 58 32 37 48 46 50 102 32 112 70 32 40 67 111 117 110 116 58 32 37 117 41 32 45 32 82 97 110 103 101 58 32 37 100 13 10 0 ]

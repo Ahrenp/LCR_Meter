@@ -7134,21 +7134,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _a `uc ~T0 @X0 1 r1 ]
 "4
 [f ]
-[; ;lcd.c: 5: LATAbits.LA4 = 0;
+[; ;lcd.c: 5: LATAbits.LA5 = 0;
 "5
-[e = . . _LATAbits 5 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 6 1 -> -> 0 `i `uc ]
 [; ;lcd.c: 6: _lcd_Port(a);
 "6
 [e ( __lcd_Port (1 _a ]
-[; ;lcd.c: 7: LATAbits.LA5 = 1;
+[; ;lcd.c: 7: LATAbits.LA4 = 1;
 "7
-[e = . . _LATAbits 6 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 5 1 -> -> 1 `i `uc ]
 [; ;lcd.c: 8: _delay((unsigned long)((4)*(16000000UL/4000.0)));
 "8
 [e ( __delay (1 -> * -> -> 4 `i `d / -> -> 16000000 `ul `d .4000.0 `ul ]
-[; ;lcd.c: 9: LATAbits.LA5 = 0;
+[; ;lcd.c: 9: LATAbits.LA4 = 0;
 "9
-[e = . . _LATAbits 6 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 5 1 -> -> 0 `i `uc ]
 [; ;lcd.c: 10: }
 "10
 [e :UE 1085 ]
@@ -7319,33 +7319,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.c: 62: y = a&0xF0;
 "62
 [e = _y -> & -> _a `i -> 240 `i `uc ]
-[; ;lcd.c: 63: LATAbits.LA4 = 1;
+[; ;lcd.c: 63: LATAbits.LA5 = 1;
 "63
-[e = . . _LATAbits 5 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 6 1 -> -> 1 `i `uc ]
 [; ;lcd.c: 64: _lcd_Port(y>>4);
 "64
 [e ( __lcd_Port (1 -> >> -> _y `i -> 4 `i `uc ]
-[; ;lcd.c: 65: LATAbits.LA5 = 1;
+[; ;lcd.c: 65: LATAbits.LA4 = 1;
 "65
-[e = . . _LATAbits 6 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 5 1 -> -> 1 `i `uc ]
 [; ;lcd.c: 66: _delay((unsigned long)((40)*(16000000UL/4000000.0)));
 "66
 [e ( __delay (1 -> * -> -> 40 `i `d / -> -> 16000000 `ul `d .4000000.0 `ul ]
-[; ;lcd.c: 67: LATAbits.LA5 = 0;
+[; ;lcd.c: 67: LATAbits.LA4 = 0;
 "67
-[e = . . _LATAbits 6 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 5 1 -> -> 0 `i `uc ]
 [; ;lcd.c: 68: _lcd_Port(temp);
 "68
 [e ( __lcd_Port (1 _temp ]
-[; ;lcd.c: 69: LATAbits.LA5 = 1;
+[; ;lcd.c: 69: LATAbits.LA4 = 1;
 "69
-[e = . . _LATAbits 6 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 5 1 -> -> 1 `i `uc ]
 [; ;lcd.c: 70: _delay((unsigned long)((40)*(16000000UL/4000000.0)));
 "70
 [e ( __delay (1 -> * -> -> 40 `i `d / -> -> 16000000 `ul `d .4000000.0 `ul ]
-[; ;lcd.c: 71: LATAbits.LA5 = 0;
+[; ;lcd.c: 71: LATAbits.LA4 = 0;
 "71
-[e = . . _LATAbits 6 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 5 1 -> -> 0 `i `uc ]
 [; ;lcd.c: 72: }
 "72
 [e :UE 1092 ]

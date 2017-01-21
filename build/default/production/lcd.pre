@@ -8905,11 +8905,11 @@ void _lcd_Port(char a);
 # 3 "lcd.c"
 void lcd_sendCommand(char a)
 {
-LATAbits.LA4 = 0;
-_lcd_Port(a);
-LATAbits.LA5 = 1;
-_delay((unsigned long)((4)*(16000000UL/4000.0)));
 LATAbits.LA5 = 0;
+_lcd_Port(a);
+LATAbits.LA4 = 1;
+_delay((unsigned long)((4)*(16000000UL/4000.0)));
+LATAbits.LA4 = 0;
 }
 
 void lcd_clear()
@@ -8963,15 +8963,15 @@ void lcd_sendChar(const char a)
 char temp,y;
 temp = a&0x0F;
 y = a&0xF0;
-LATAbits.LA4 = 1;
+LATAbits.LA5 = 1;
 _lcd_Port(y>>4);
-LATAbits.LA5 = 1;
+LATAbits.LA4 = 1;
 _delay((unsigned long)((40)*(16000000UL/4000000.0)));
-LATAbits.LA5 = 0;
+LATAbits.LA4 = 0;
 _lcd_Port(temp);
-LATAbits.LA5 = 1;
+LATAbits.LA4 = 1;
 _delay((unsigned long)((40)*(16000000UL/4000000.0)));
-LATAbits.LA5 = 0;
+LATAbits.LA4 = 0;
 }
 
 void lcd_sendString(const char * a)

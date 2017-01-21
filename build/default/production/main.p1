@@ -7282,8 +7282,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1093  ]
 "67
 [e :U 1092 ]
-[; ;main.c: 67: else if (result < 1000 && result > 0)
-[e $ ! && < _result -> -> 1000 `i `f > _result -> -> 0 `i `f 1094  ]
+[; ;main.c: 67: else
 [; ;main.c: 68: {
 "68
 {
@@ -7292,12 +7291,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _sprintf (1 , (. , &U _cap_string :s 3C -> _result `d ]
 "70
 }
-[e :U 1094 ]
-"72
 [e :U 1093 ]
 [e :U 1091 ]
 [; ;main.c: 70: }
 [; ;main.c: 72: lcd_sendString(cap_string);
+"72
 [e ( _lcd_sendString (1 -> &U _cap_string `*Cuc ]
 "73
 }

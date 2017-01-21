@@ -3,6 +3,8 @@
 #include "pin_manager.h"
 
 extern uint8_t range;
+extern uint16_t reading;
+extern void SetRange(uint8_t new_range);
 
 /**
   Section: Global Variables Definitions
@@ -85,7 +87,6 @@ void TMR0_Reload(void)
 
 void TMR0_ISR(void)
 {
-
     // clear the TMR0 interrupt flag
     INTCONbits.TMR0IF = 0;
 
@@ -105,8 +106,17 @@ void TMR0_SetInterruptHandler(void* InterruptHandler){
     TMR0_InterruptHandler = InterruptHandler;
 }
 
-void TMR0_DefaultInterruptHandler(void){
-    LATCbits.LATC7 = ~LATCbits.LATC7;
+void TMR0_DefaultInterruptHandler(void)
+{    
+    //Timer has overflowed, toggle UC
+    //UC_SetLow();
+    UC_Toggle();
+    
+    if (range < 5)
+    {
+        range += 1;
+        SetRange(range);
+    }
 }
 
 /**
