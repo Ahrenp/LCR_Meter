@@ -41,6 +41,15 @@ void main(void)
     lcd_init();
     lcd_clear();
     
+    //Initial range
+    //All control bits high
+    LATC |= (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4);
+    LATB |= (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5);
+    
+    //Desired range bits low
+    LATC &= ~(1 << 1);
+    LATB &= ~(1 << 3);
+    
     while (1)
     {        
         //Update display
@@ -55,7 +64,7 @@ void main(void)
         {
             sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
         }
-        else
+        else if (result < 1000 && result > 0)
         {
             sprintf(cap_string, "C=%12.0fpF", result);
         }

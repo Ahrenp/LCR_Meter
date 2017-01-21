@@ -2,6 +2,8 @@
 #include "tmr0.h"
 #include "pin_manager.h"
 
+extern uint8_t range;
+
 /**
   Section: Global Variables Definitions
 */
@@ -96,8 +98,6 @@ void TMR0_ISR(void)
     {
         TMR0_InterruptHandler();
     }
-
-    // add your TMR0 interrupt custom code
 }
 
 
@@ -106,7 +106,7 @@ void TMR0_SetInterruptHandler(void* InterruptHandler){
 }
 
 void TMR0_DefaultInterruptHandler(void){
-    LATBbits.LATB1 = ~LATBbits.LATB1;
+    LATCbits.LATC7 = ~LATCbits.LATC7;
 }
 
 /**

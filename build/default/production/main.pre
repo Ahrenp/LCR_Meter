@@ -8792,10 +8792,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 192 "mcc_generated_files/pin_manager.h"
+# 333 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 204
+# 345
 void PIN_MANAGER_IOC(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
@@ -8897,22 +8897,37 @@ void interrupt INTERRUPT_InterruptManager(void);
 # 122
 void INTERRUPT_Initialize (void);
 
-# 250 "mcc_generated_files/ext_int.h"
+# 406 "mcc_generated_files/ext_int.h"
 void EXT_INT_Initialize(void);
 
-# 272
+# 428
+void INT1_ISR(void);
+
+# 452
+void INT1_CallBack(void);
+
+# 475
+void INT1_SetInterruptHandler(void* InterruptHandler);
+
+# 499
+extern void (*INT1_InterruptHandler)(void);
+
+# 523
+void INT1_DefaultInterruptHandler(void);
+
+# 541
 void INT0_ISR(void);
 
-# 296
+# 565
 void INT0_CallBack(void);
 
-# 319
+# 588
 void INT0_SetInterruptHandler(void* InterruptHandler);
 
-# 343
+# 612
 extern void (*INT0_InterruptHandler)(void);
 
-# 367
+# 636
 void INT0_DefaultInterruptHandler(void);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
@@ -9150,6 +9165,15 @@ SYSTEM_Initialize();
 lcd_init();
 lcd_clear();
 
+
+
+LATC |= (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4);
+LATB |= (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5);
+
+
+LATC &= ~(1 << 1);
+LATB &= ~(1 << 3);
+
 while (1)
 {
 
@@ -9164,7 +9188,7 @@ else if (result < 1000000 && result >= 1000.0)
 {
 sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
 }
-else
+else if (result < 1000 && result > 0)
 {
 sprintf(cap_string, "C=%12.0fpF", result);
 }

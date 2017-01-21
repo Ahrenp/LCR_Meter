@@ -20,6 +20,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcd_init `(v ~T0 @X0 0 ef ]
 "30
 [v _lcd_clear `(v ~T0 @X0 0 ef ]
+"7601 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
+[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
+"7469
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
 "5 main.c
 [v _result `f ~T0 @X0 0 e ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdio.h
@@ -7035,8 +7039,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 192: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 204: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 333: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 345: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -7068,12 +7072,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 122: void INTERRUPT_Initialize (void);
-[; ;ext_int.h: 250: void EXT_INT_Initialize(void);
-[; ;ext_int.h: 272: void INT0_ISR(void);
-[; ;ext_int.h: 296: void INT0_CallBack(void);
-[; ;ext_int.h: 319: void INT0_SetInterruptHandler(void* InterruptHandler);
-[; ;ext_int.h: 343: extern void (*INT0_InterruptHandler)(void);
-[; ;ext_int.h: 367: void INT0_DefaultInterruptHandler(void);
+[; ;ext_int.h: 406: void EXT_INT_Initialize(void);
+[; ;ext_int.h: 428: void INT1_ISR(void);
+[; ;ext_int.h: 452: void INT1_CallBack(void);
+[; ;ext_int.h: 475: void INT1_SetInterruptHandler(void* InterruptHandler);
+[; ;ext_int.h: 499: extern void (*INT1_InterruptHandler)(void);
+[; ;ext_int.h: 523: void INT1_DefaultInterruptHandler(void);
+[; ;ext_int.h: 541: void INT0_ISR(void);
+[; ;ext_int.h: 565: void INT0_CallBack(void);
+[; ;ext_int.h: 588: void INT0_SetInterruptHandler(void* InterruptHandler);
+[; ;ext_int.h: 612: extern void (*INT0_InterruptHandler)(void);
+[; ;ext_int.h: 636: void INT0_DefaultInterruptHandler(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -7223,68 +7232,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 42: lcd_clear();
 "42
 [e ( _lcd_clear ..  ]
-[; ;main.c: 44: while (1)
-"44
-[e :U 1088 ]
-[; ;main.c: 45: {
-"45
-{
+[; ;main.c: 46: LATC |= (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4);
+"46
+[e =| _LATC -> | | | | << -> 1 `i -> 0 `i << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i << -> 1 `i -> 4 `i `uc ]
+[; ;main.c: 47: LATB |= (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5);
 "47
-[v _cap_string `uc ~T0 @X0 -> 16 `i a ]
-[; ;main.c: 47: char cap_string[16];
-[; ;main.c: 50: if (result >= 1000000.0)
+[e =| _LATB -> | | | << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i << -> 1 `i -> 4 `i << -> 1 `i -> 5 `i `uc ]
+[; ;main.c: 50: LATC &= ~(1 << 1);
 "50
-[e $ ! >= -> _result `d .1000000.0 1090  ]
-[; ;main.c: 51: {
+[e =& _LATC -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;main.c: 51: LATB &= ~(1 << 3);
 "51
-{
-[; ;main.c: 52: sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
-"52
-[e ( _sprintf (1 , (. , &U _cap_string :s 1C / -> _result `d .1000000.0 ]
+[e =& _LATB -> ~ << -> 1 `i -> 3 `i `uc ]
+[; ;main.c: 53: while (1)
 "53
-}
-[; ;main.c: 53: }
-[e $U 1091  ]
+[e :U 1088 ]
+[; ;main.c: 54: {
 "54
-[e :U 1090 ]
-[; ;main.c: 54: else if (result < 1000000 && result >= 1000.0)
-[e $ ! && < _result -> -> 1000000 `l `f >= -> _result `d .1000.0 1092  ]
-[; ;main.c: 55: {
-"55
 {
-[; ;main.c: 56: sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
 "56
-[e ( _sprintf (1 , (. , &U _cap_string :s 2C / -> _result `d .1000.0 ]
-"57
-}
-[; ;main.c: 57: }
-[e $U 1093  ]
-"58
-[e :U 1092 ]
-[; ;main.c: 58: else
-[; ;main.c: 59: {
+[v _cap_string `uc ~T0 @X0 -> 16 `i a ]
+[; ;main.c: 56: char cap_string[16];
+[; ;main.c: 59: if (result >= 1000000.0)
 "59
-{
-[; ;main.c: 60: sprintf(cap_string, "C=%12.0fpF", result);
+[e $ ! >= -> _result `d .1000000.0 1090  ]
+[; ;main.c: 60: {
 "60
-[e ( _sprintf (1 , (. , &U _cap_string :s 3C -> _result `d ]
+{
+[; ;main.c: 61: sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
 "61
+[e ( _sprintf (1 , (. , &U _cap_string :s 1C / -> _result `d .1000000.0 ]
+"62
 }
+[; ;main.c: 62: }
+[e $U 1091  ]
+"63
+[e :U 1090 ]
+[; ;main.c: 63: else if (result < 1000000 && result >= 1000.0)
+[e $ ! && < _result -> -> 1000000 `l `f >= -> _result `d .1000.0 1092  ]
+[; ;main.c: 64: {
+"64
+{
+[; ;main.c: 65: sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
+"65
+[e ( _sprintf (1 , (. , &U _cap_string :s 2C / -> _result `d .1000.0 ]
+"66
+}
+[; ;main.c: 66: }
+[e $U 1093  ]
+"67
+[e :U 1092 ]
+[; ;main.c: 67: else if (result < 1000 && result > 0)
+[e $ ! && < _result -> -> 1000 `i `f > _result -> -> 0 `i `f 1094  ]
+[; ;main.c: 68: {
+"68
+{
+[; ;main.c: 69: sprintf(cap_string, "C=%12.0fpF", result);
+"69
+[e ( _sprintf (1 , (. , &U _cap_string :s 3C -> _result `d ]
+"70
+}
+[e :U 1094 ]
+"72
 [e :U 1093 ]
 [e :U 1091 ]
-[; ;main.c: 61: }
-[; ;main.c: 63: lcd_sendString(cap_string);
-"63
+[; ;main.c: 70: }
+[; ;main.c: 72: lcd_sendString(cap_string);
 [e ( _lcd_sendString (1 -> &U _cap_string `*Cuc ]
-"64
+"73
 }
 [e :U 1087 ]
-"44
+"53
 [e $U 1088  ]
 [e :U 1089 ]
-[; ;main.c: 64: }
-[; ;main.c: 65: }
-"65
+[; ;main.c: 73: }
+[; ;main.c: 74: }
+"74
 [e :UE 1086 ]
 }
 [p f _sprintf 8495104 ]

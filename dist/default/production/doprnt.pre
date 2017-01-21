@@ -415,6 +415,11 @@ case 'f':
 flag |= 0x400;
 break;
 
+# 697
+case 'd':
+case 'i':
+break;
+
 # 802
 default:
 
@@ -424,7 +429,7 @@ continue;
 
 
 case 'u':
-flag |= 0xC0;
+flag |= 0x40;
 break;
 
 
@@ -579,7 +584,31 @@ prec--;
 continue;
 }
 
-# 1273
+
+
+
+if((flag & 0x40) == 0x00)
+
+{
+
+if(flag & 0x10)
+val = (*(long *)__va_arg((*(long **)ap), (long)0));
+else
+
+val = (long)(*(int *)__va_arg((*(int **)ap), (int)0));
+
+if((long)val < 0) {
+flag |= 0x03;
+val = -val;
+}
+
+}
+
+else
+
+
+
+
 {
 
 # 1281
