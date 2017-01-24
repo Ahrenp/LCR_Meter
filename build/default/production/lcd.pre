@@ -9042,22 +9042,22 @@ lcd_sendCommand(0x08);
 void _lcd_Port(char a)
 {
 if(a & 1)
-LATAbits.LA0 = 1;
+LATAbits.LA3 = 1;
 else
-LATAbits.LA0 = 0;
+LATAbits.LA3 = 0;
 
 if(a & 2)
-LATAbits.LA1 = 1;
-else
-LATAbits.LA1 = 0;
-
-if(a & 4)
 LATAbits.LA2 = 1;
 else
 LATAbits.LA2 = 0;
 
-if(a & 8)
-LATAbits.LA3 = 1;
+if(a & 4)
+LATAbits.LA1 = 1;
 else
-LATAbits.LA3 = 0;
+LATAbits.LA1 = 0;
+
+if(a & 8)
+LATAbits.LA0 = 1;
+else
+LATAbits.LA0 = 0;
 }

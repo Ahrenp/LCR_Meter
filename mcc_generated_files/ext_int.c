@@ -8,13 +8,36 @@
 #include "pin_manager.h"
 
 #define MIN_COUNTS 1000
-#define MAX_COUNTS 60000
+#define MIN_RANGE 2
+#define MAX_RANGE 5
 
-const uint8_t R1_BIT[] = {0, 1, 2, 3, 4};
-const uint8_t RSET_BIT[] = {2, 3, 3, 4, 5};
-const float cal_current[] = {0.50, 2.98, 108.43, 4525.0, 112000.0};
+//***User Area Begin->code: Add External Interrupt handler specific headers
 
-//***User Area Begin->code: Add External Interrupt handler specific headers 
+// Configuration variables
+// R1_BIT and RSET_BIT define the individual range bits for each port
+const uint8_t R1_BIT[] =    {0, 1, 2, 3, 4};
+const uint8_t RSET_BIT[] =  {2, 3, 3, 4, 5};
+
+// Current in microamps for each range
+const float cal_current[] = {0.50, 7.8, 108.43, 4430.0, 112000.0};
+
+// Functional variables
+// Reading in integer form and result in float form
+uint16_t reading;
+float result;
+
+// Initial range on boot up
+uint8_t range = 2;
+
+// Auto range on (1) / off (0)
+uint8_t auto_range = 1;
+
+// If auto range is turned off the last auto selected range is retained
+uint8_t stored_range = 0;
+
+// Calibration setting - when this variable is set to 1, the UC pin stays low
+
+// Sets a range given an integer valued 1 to 5
 void SetRange(uint8_t new_range)
 {
     //Reset all range bits
@@ -26,32 +49,40 @@ void SetRange(uint8_t new_range)
 }
 
 //***User Area End->code: Add External Interrupt handler specific headers
-uint16_t reading;
-float result;
 
-int8_t delta_range = 0;
-uint8_t range = 2;
-
-/**
-   Section: External Interrupt Handlers
- */
-// INTn Dynamic Interrupt Handlers 
-void (*INT1_InterruptHandler)(void);
-void (*INT0_InterruptHandler)(void);
 /**
   Interrupt Handler for EXT_INT1 - INT1
 */
 void INT1_ISR(void)
-{
+{   
     //***User Area Begin->code***
-    if (range < 5)
+    // If auto range is currently enabled, store the auto selected range
+    if (auto_range == 1)
+    {
+        stored_range = range;
+        auto_range = 0;
+    }   
+    
+    // Select the next range based on the current range
+    if (range < MAX_RANGE)
     {
         range += 1;
     }
     else
+    // Go back MAX - MIN ranges
     {
-        range -= 3;
+        range -= (MAX_RANGE - MIN_RANGE);
     }
+    
+    // Check to see if auto ranging is off, and turn it back on if 
+    // the the user has looped back to the last stored auto range
+    if (auto_range == 0 && range == stored_range)
+    {
+        auto_range = 1;
+    }
+    
+    // DEBUG: Print the range that has been changed to
+    printf("Range: %d\r\n", range);
     
     SetRange(range);
     
@@ -59,33 +90,7 @@ void INT1_ISR(void)
         
     EXT_INT1_InterruptFlagClear();  
 }
-        
-/**
-  Callback function for EXT_INT1 - INT1
-*/
-void INT1_CallBack(void)
-{
-    // Add your custom callback code here
-    if(INT1_InterruptHandler)
-    {
-        //INT1_InterruptHandler();
-    }
-}
 
-/**
-  Allows selecting an interrupt handler for EXT_INT1 - INT1 at application runtime
-*/
-void INT1_SetInterruptHandler(void* InterruptHandler){
-    INT1_InterruptHandler = InterruptHandler;
-}
-    
-/**
-  Default interrupt handler for EXT_INT1 - INT1 
-*/
-void INT1_DefaultInterruptHandler(void){
-    // add your INT1 interrupt custom code
-    // or set custom function using INT1_SetInterruptHandler()
-}
 /**
   Interrupt Handler for EXT_INT0 - INT0
 */
@@ -103,12 +108,16 @@ void INT0_ISR(void)
     result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
     
     //Print capacitance reading
-    printf("Capacitance: %0.2f pF (Count: %u) - Range: %d\r\n", result, reading, range);
+    printf("Capacitance: %0.2f pF (Count: %u) - Range: %d (%d)\r\n", result, reading, range, auto_range);
     
-    if (reading < 1000 && range > 2)
+    //Autorange decrease range
+    if (auto_range == 1)
     {
-        range -= 1;
-        SetRange(range);
+        if (reading < MIN_COUNTS && range > MIN_RANGE)
+        {
+            range -= 1;
+            SetRange(range);
+        }
     }
     
     //Reload the timer with inital values for its specified (60ms) range
@@ -123,32 +132,6 @@ void INT0_ISR(void)
 }
 
 /**
-  Callback function for EXT_INT0 - INT0
-*/
-void INT0_CallBack(void)
-{
-    // Add your custom callback code here
-    if(INT0_InterruptHandler)
-    {
-        INT0_InterruptHandler();
-    }
-}
-
-/**
-  Allows selecting an interrupt handler for EXT_INT0 - INT0 at application runtime
-*/
-void INT0_SetInterruptHandler(void* InterruptHandler){
-    INT0_InterruptHandler = InterruptHandler;
-}
-
-/**
-  Default interrupt handler for EXT_INT0 - INT0 
-*/
-void INT0_DefaultInterruptHandler(void){
-    // add your INT0 interrupt custom code
-    // or set custom function using INT0_SetInterruptHandler()
-}
-/**
     Section: External Interrupt Initializers
  */
 /**
@@ -160,7 +143,6 @@ void INT0_DefaultInterruptHandler(void){
 */
 void EXT_INT_Initialize(void)
 {
-    
     /*******
      * INT1
      * Clear the interrupt flag
@@ -169,12 +151,7 @@ void EXT_INT_Initialize(void)
      ********/
     EXT_INT1_InterruptFlagClear();   
     EXT_INT1_fallingEdgeSet();    
-    // Set Default Interrupt Handler
-    INT1_SetInterruptHandler(INT1_DefaultInterruptHandler);
     EXT_INT1_InterruptEnable();      
-
-
-
     
     /*******
      * INT0
@@ -184,13 +161,6 @@ void EXT_INT_Initialize(void)
      ********/
     EXT_INT0_InterruptFlagClear();   
     EXT_INT0_fallingEdgeSet();    
-    // Set Default Interrupt Handler
-    INT0_SetInterruptHandler(INT0_DefaultInterruptHandler);
     EXT_INT0_InterruptEnable();      
-
-
-
- 
-      
 }
 

@@ -4,6 +4,7 @@
 
 extern uint8_t range;
 extern uint16_t reading;
+extern uint8_t auto_range;
 extern void SetRange(uint8_t new_range);
 
 /**
@@ -109,13 +110,16 @@ void TMR0_SetInterruptHandler(void* InterruptHandler){
 void TMR0_DefaultInterruptHandler(void)
 {    
     //Timer has overflowed, toggle UC
-    //UC_SetLow();
     UC_Toggle();
     
-    if (range < 5)
+    //Autorange increase range
+    if (auto_range == 1)
     {
-        range += 1;
-        SetRange(range);
+        if (range < 5)
+        {
+            range += 1;
+            SetRange(range);
+        }
     }
 }
 

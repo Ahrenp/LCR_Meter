@@ -12,10 +12,10 @@
 
 //4 bit bus for the data lines
 //Should be set to output in pin configuration
-#define D4 LATAbits.LA0
-#define D5 LATAbits.LA1
-#define D6 LATAbits.LA2
-#define D7 LATAbits.LA3
+#define D4 LATAbits.LA3
+#define D5 LATAbits.LA2
+#define D6 LATAbits.LA1
+#define D7 LATAbits.LA0
 
 //Latches for control pins - enable, read/write, register select
 //Should be set to output in pin configuration

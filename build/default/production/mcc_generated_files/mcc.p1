@@ -7139,15 +7139,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt_manager.h: 122: void INTERRUPT_Initialize (void);
 [; ;ext_int.h: 406: void EXT_INT_Initialize(void);
 [; ;ext_int.h: 428: void INT1_ISR(void);
-[; ;ext_int.h: 452: void INT1_CallBack(void);
-[; ;ext_int.h: 475: void INT1_SetInterruptHandler(void* InterruptHandler);
-[; ;ext_int.h: 499: extern void (*INT1_InterruptHandler)(void);
-[; ;ext_int.h: 523: void INT1_DefaultInterruptHandler(void);
-[; ;ext_int.h: 541: void INT0_ISR(void);
-[; ;ext_int.h: 565: void INT0_CallBack(void);
-[; ;ext_int.h: 588: void INT0_SetInterruptHandler(void* InterruptHandler);
-[; ;ext_int.h: 612: extern void (*INT0_InterruptHandler)(void);
-[; ;ext_int.h: 636: void INT0_DefaultInterruptHandler(void);
+[; ;ext_int.h: 447: void INT0_ISR(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);

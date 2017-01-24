@@ -25,7 +25,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S976 . . . . . . . . ]
 "15588
 [v _RCONbits `VS976 ~T0 @X0 0 e@4048 ]
-"16620
+"16460
+[s S1046 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1046 . INT1IF INT2IF . INT1IE INT2IE . INT1IP INT2IP ]
+"16470
+[s S1047 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1047 . INT1F INT2F . INT1E INT2E . INT1P INT2P ]
+"16459
+[u S1045 `S1046 1 `S1047 1 ]
+[n S1045 . . . ]
+"16481
+[v _INTCON3bits `VS1045 ~T0 @X0 0 e@4080 ]
+"428 mcc_generated_files/ext_int.h
+[v _INT1_ISR `(v ~T0 @X0 0 ef ]
+"16620 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
 [s S1053 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1053 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "16630
@@ -39,21 +52,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1052 . . . . ]
 "16646
 [v _INTCONbits `VS1052 ~T0 @X0 0 e@4082 ]
-"541 mcc_generated_files/ext_int.h
+"447 mcc_generated_files/ext_int.h
 [v _INT0_ISR `(v ~T0 @X0 0 ef ]
-"16460 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f25k22.h
-[s S1046 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1046 . INT1IF INT2IF . INT1IE INT2IE . INT1IP INT2IP ]
-"16470
-[s S1047 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1047 . INT1F INT2F . INT1E INT2E . INT1P INT2P ]
-"16459
-[u S1045 `S1046 1 `S1047 1 ]
-[n S1045 . . . ]
-"16481
-[v _INTCON3bits `VS1045 ~T0 @X0 0 e@4080 ]
-"428 mcc_generated_files/ext_int.h
-[v _INT1_ISR `(v ~T0 @X0 0 ef ]
 "289 mcc_generated_files/tmr0.h
 [v _TMR0_ISR `(v ~T0 @X0 0 ef ]
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
@@ -7100,15 +7100,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;ext_int.h: 406: void EXT_INT_Initialize(void);
 [; ;ext_int.h: 428: void INT1_ISR(void);
-[; ;ext_int.h: 452: void INT1_CallBack(void);
-[; ;ext_int.h: 475: void INT1_SetInterruptHandler(void* InterruptHandler);
-[; ;ext_int.h: 499: extern void (*INT1_InterruptHandler)(void);
-[; ;ext_int.h: 523: void INT1_DefaultInterruptHandler(void);
-[; ;ext_int.h: 541: void INT0_ISR(void);
-[; ;ext_int.h: 565: void INT0_CallBack(void);
-[; ;ext_int.h: 588: void INT0_SetInterruptHandler(void* InterruptHandler);
-[; ;ext_int.h: 612: extern void (*INT0_InterruptHandler)(void);
-[; ;ext_int.h: 636: void INT0_DefaultInterruptHandler(void);
+[; ;ext_int.h: 447: void INT0_ISR(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -7178,29 +7170,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt_manager.c: 11: {
 [e :U _INTERRUPT_InterruptManager ]
 [f ]
-[; ;interrupt_manager.c: 13: if(INTCONbits.INT0IE == 1 && INTCONbits.INT0IF == 1)
+[; ;interrupt_manager.c: 13: if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
 "13
-[e $ ! && == -> . . _INTCONbits 0 4 `i -> 1 `i == -> . . _INTCONbits 0 1 `i -> 1 `i 1084  ]
+[e $ ! && == -> . . _INTCON3bits 0 3 `i -> 1 `i == -> . . _INTCON3bits 0 0 `i -> 1 `i 1084  ]
 [; ;interrupt_manager.c: 14: {
 "14
 {
-[; ;interrupt_manager.c: 15: INT0_ISR();
+[; ;interrupt_manager.c: 15: INT1_ISR();
 "15
-[e ( _INT0_ISR ..  ]
+[e ( _INT1_ISR ..  ]
 "16
 }
 [; ;interrupt_manager.c: 16: }
 [e $U 1085  ]
 "17
 [e :U 1084 ]
-[; ;interrupt_manager.c: 17: else if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
-[e $ ! && == -> . . _INTCON3bits 0 3 `i -> 1 `i == -> . . _INTCON3bits 0 0 `i -> 1 `i 1086  ]
+[; ;interrupt_manager.c: 17: else if(INTCONbits.INT0IE == 1 && INTCONbits.INT0IF == 1)
+[e $ ! && == -> . . _INTCONbits 0 4 `i -> 1 `i == -> . . _INTCONbits 0 1 `i -> 1 `i 1086  ]
 [; ;interrupt_manager.c: 18: {
 "18
 {
-[; ;interrupt_manager.c: 19: INT1_ISR();
+[; ;interrupt_manager.c: 19: INT0_ISR();
 "19
-[e ( _INT1_ISR ..  ]
+[e ( _INT0_ISR ..  ]
 "20
 }
 [; ;interrupt_manager.c: 20: }

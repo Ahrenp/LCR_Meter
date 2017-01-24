@@ -8903,32 +8903,8 @@ void EXT_INT_Initialize(void);
 # 428
 void INT1_ISR(void);
 
-# 452
-void INT1_CallBack(void);
-
-# 475
-void INT1_SetInterruptHandler(void* InterruptHandler);
-
-# 499
-extern void (*INT1_InterruptHandler)(void);
-
-# 523
-void INT1_DefaultInterruptHandler(void);
-
-# 541
+# 447
 void INT0_ISR(void);
-
-# 565
-void INT0_CallBack(void);
-
-# 588
-void INT0_SetInterruptHandler(void* InterruptHandler);
-
-# 612
-extern void (*INT0_InterruptHandler)(void);
-
-# 636
-void INT0_DefaultInterruptHandler(void);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
 typedef unsigned size_t;
@@ -9048,13 +9024,13 @@ RCONbits.IPEN = 0;
 void interrupt INTERRUPT_InterruptManager (void)
 {
 
-if(INTCONbits.INT0IE == 1 && INTCONbits.INT0IF == 1)
-{
-INT0_ISR();
-}
-else if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
+if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
 {
 INT1_ISR();
+}
+else if(INTCONbits.INT0IE == 1 && INTCONbits.INT0IF == 1)
+{
+INT0_ISR();
 }
 else if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
 {

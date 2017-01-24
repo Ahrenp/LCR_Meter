@@ -7601,58 +7601,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.c: 141: if(a & 1)
 "141
 [e $ ! != & -> _a `i -> 1 `i -> 0 `i 1108  ]
-[; ;lcd.c: 142: LATAbits.LA0 = 1;
+[; ;lcd.c: 142: LATAbits.LA3 = 1;
 "142
-[e = . . _LATAbits 1 0 -> -> 1 `i `uc ]
+[e = . . _LATAbits 4 1 -> -> 1 `i `uc ]
 [e $U 1109  ]
 "143
 [e :U 1108 ]
 [; ;lcd.c: 143: else
-[; ;lcd.c: 144: LATAbits.LA0 = 0;
+[; ;lcd.c: 144: LATAbits.LA3 = 0;
 "144
-[e = . . _LATAbits 1 0 -> -> 0 `i `uc ]
+[e = . . _LATAbits 4 1 -> -> 0 `i `uc ]
 [e :U 1109 ]
 [; ;lcd.c: 146: if(a & 2)
 "146
 [e $ ! != & -> _a `i -> 2 `i -> 0 `i 1110  ]
-[; ;lcd.c: 147: LATAbits.LA1 = 1;
+[; ;lcd.c: 147: LATAbits.LA2 = 1;
 "147
-[e = . . _LATAbits 2 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 3 1 -> -> 1 `i `uc ]
 [e $U 1111  ]
 "148
 [e :U 1110 ]
 [; ;lcd.c: 148: else
-[; ;lcd.c: 149: LATAbits.LA1 = 0;
+[; ;lcd.c: 149: LATAbits.LA2 = 0;
 "149
-[e = . . _LATAbits 2 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 3 1 -> -> 0 `i `uc ]
 [e :U 1111 ]
 [; ;lcd.c: 151: if(a & 4)
 "151
 [e $ ! != & -> _a `i -> 4 `i -> 0 `i 1112  ]
-[; ;lcd.c: 152: LATAbits.LA2 = 1;
+[; ;lcd.c: 152: LATAbits.LA1 = 1;
 "152
-[e = . . _LATAbits 3 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 2 1 -> -> 1 `i `uc ]
 [e $U 1113  ]
 "153
 [e :U 1112 ]
 [; ;lcd.c: 153: else
-[; ;lcd.c: 154: LATAbits.LA2 = 0;
+[; ;lcd.c: 154: LATAbits.LA1 = 0;
 "154
-[e = . . _LATAbits 3 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 2 1 -> -> 0 `i `uc ]
 [e :U 1113 ]
 [; ;lcd.c: 156: if(a & 8)
 "156
 [e $ ! != & -> _a `i -> 8 `i -> 0 `i 1114  ]
-[; ;lcd.c: 157: LATAbits.LA3 = 1;
+[; ;lcd.c: 157: LATAbits.LA0 = 1;
 "157
-[e = . . _LATAbits 4 1 -> -> 1 `i `uc ]
+[e = . . _LATAbits 1 0 -> -> 1 `i `uc ]
 [e $U 1115  ]
 "158
 [e :U 1114 ]
 [; ;lcd.c: 158: else
-[; ;lcd.c: 159: LATAbits.LA3 = 0;
+[; ;lcd.c: 159: LATAbits.LA0 = 0;
 "159
-[e = . . _LATAbits 4 1 -> -> 0 `i `uc ]
+[e = . . _LATAbits 1 0 -> -> 0 `i `uc ]
 [e :U 1115 ]
 [; ;lcd.c: 160: }
 "160
