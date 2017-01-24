@@ -41,6 +41,8 @@ uint8_t stored_range = 0;
 // Calibration setting - when this variable is set to 1, the UC pin stays low
 uint8_t cal_mode = 0;
 
+char toggle = 0b11111111;
+
 // Sets a range given an integer valued 1 to 5
 void SetRange(uint8_t new_range)
 {
@@ -58,6 +60,17 @@ void UpdateDisplay()
     char cap_string[16];
     char range_string[16];
 
+    //Display update toggle char
+    if (toggle == 0b11111111)
+    {
+        toggle = ' ';
+        
+    }
+    else
+    {
+        toggle = 0b11111111;
+    }
+    
     //Units logic
     if (result >= 1000000.0)
     {
@@ -69,14 +82,14 @@ void UpdateDisplay()
     }
     else if (result < 0)
     {
-        sprintf(cap_string, "C=ERROR         ");
+        sprintf(cap_string, "C=ERR / OVERLOAD");
     }
     else
     {
         sprintf(cap_string, "C=%12.0fpF", result);
     }
 
-    sprintf(range_string, "Range %d (%d)%d", range, auto_range, av_count);
+    sprintf(range_string, "Range %d (%d)%d %c", range, auto_range, av_count, toggle);
     
     lcd_sendStringToPos(1, 1, cap_string);
     lcd_sendStringToPos(1, 2, range_string);
@@ -107,6 +120,10 @@ void INT1_ISR(void)
     {
         range -= (MAX_RANGE - MIN_RANGE);
     }
+    
+    // Set result to overload if the selected range turns out to be invalid
+    result = -1;
+    UpdateDisplay();
     
     // Check to see if auto ranging is off, and turn it back on if 
     // the the user has looped back to the last stored auto range
@@ -170,7 +187,7 @@ void INT0_ISR(void)
     }
     
     // Delay to make sure capacitor drains
-    __delay_ms(range);
+    __delay_ms(10);
     
     //Reload the timer with inital values for its specified (60ms) range
     TMR0_Reload();

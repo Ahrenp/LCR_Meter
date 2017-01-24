@@ -8388,6 +8388,8 @@ uint8_t stored_range = 0;
 
 uint8_t cal_mode = 0;
 
+char toggle = 0b11111111;
+
 
 void SetRange(uint8_t new_range)
 {
@@ -8406,6 +8408,17 @@ char cap_string[16];
 char range_string[16];
 
 
+if (toggle == 0b11111111)
+{
+toggle = ' ';
+
+}
+else
+{
+toggle = 0b11111111;
+}
+
+
 if (result >= 1000000.0)
 {
 sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
@@ -8416,20 +8429,20 @@ sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
 }
 else if (result < 0)
 {
-sprintf(cap_string, "C=ERROR         ");
+sprintf(cap_string, "C=ERR / OVERLOAD");
 }
 else
 {
 sprintf(cap_string, "C=%12.0fpF", result);
 }
 
-sprintf(range_string, "Range %d (%d)%d", range, auto_range, av_count);
+sprintf(range_string, "Range %d (%d)%d %c", range, auto_range, av_count, toggle);
 
 lcd_sendStringToPos(1, 1, cap_string);
 lcd_sendStringToPos(1, 2, range_string);
 }
 
-# 90
+# 103
 void INT1_ISR(void)
 {
 
@@ -8452,6 +8465,10 @@ range -= (5 - 2);
 }
 
 
+result = -1;
+UpdateDisplay();
+
+
 
 if (auto_range == 0 && range == stored_range)
 {
@@ -8468,7 +8485,7 @@ SetRange(range);
 (INTCON3bits.INT1IF = 0);
 }
 
-# 131
+# 148
 void INT0_ISR(void)
 {
 
@@ -8497,7 +8514,7 @@ UpdateDisplay();
 av_count = 0;
 }
 
-# 163
+# 180
 if (auto_range == 1)
 {
 if (reading < 1000 && range > 2)
@@ -8508,7 +8525,7 @@ SetRange(range);
 }
 
 
-_delay((unsigned long)((5)*(16000000UL/4000.0)));
+_delay((unsigned long)((10)*(16000000UL/4000.0)));
 
 
 TMR0_Reload();
@@ -8521,16 +8538,16 @@ TMR0_StartTimer();
 (INTCONbits.INT0IF = 0);
 }
 
-# 196
+# 213
 void EXT_INT_Initialize(void)
 {
 
-# 204
+# 221
 (INTCON3bits.INT1IF = 0);
 (INTCON2bits.INTEDG1 = 0);
 (INTCON3bits.INT1IE = 1);
 
-# 214
+# 231
 (INTCONbits.INT0IF = 0);
 (INTCON2bits.INTEDG0 = 0);
 (INTCONbits.INT0IE = 1);

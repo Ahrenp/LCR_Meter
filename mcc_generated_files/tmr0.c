@@ -3,12 +3,12 @@
 #include "pin_manager.h"
 
 // Shared variables
-extern uint8_t range;
+extern uint8_t  range;
 extern uint16_t reading;
-extern uint8_t auto_range;
-extern uint8_t cal_mode;
+extern uint8_t  auto_range, cal_mode, av_count;
 
 extern void SetRange(uint8_t new_range);
+extern void UpdateDisplay();
 
 /**
   Section: Global Variables Definitions
@@ -124,7 +124,7 @@ void TMR0_DefaultInterruptHandler(void)
         UC_SetLow();
     }
     
-    //Autorange increase range
+    // Autorange increase range
     if (auto_range == 1)
     {
         if (range < 5)

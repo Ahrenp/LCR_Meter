@@ -407,14 +407,44 @@ case 'd':
 case 'i':
 break;
 
-# 802
-default:
+# 750
+dostring:
 
-# 813
+
+if(prec && prec < len)
+len = prec;
+
+
+if(width > len)
+width -= len;
+else
+width = 0;
+
+# 764
+while(width--)
+if(pb->func) (pb->func(' ')); else ((*pb->ptr++ = ' '));
+
+while(len--)
+if(pb->func) (pb->func(*cp++)); else ((*pb->ptr++ = *cp++));
+
+# 774
 continue;
 
+# 784
+case 'c':
+
+# 799
+c = (*(int *)__va_arg((*(int **)ap), (int)0));
 
 
+default:
+
+
+cp = (char *)&c;
+len = 1;
+goto dostring;
+
+# 817
 case 'u':
 flag |= 0x40;
 break;
