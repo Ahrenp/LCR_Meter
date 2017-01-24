@@ -64,11 +64,16 @@ void main(void)
         {
             sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
         }
+        else if (result < 0)
+        {
+            sprintf(cap_string, "C=ERROR");
+        }
         else
         {
             sprintf(cap_string, "C=%12.0fpF", result);
         }
 
-        lcd_sendString(cap_string);
+        lcd_sendStringToPos(1, 1, cap_string);
+        //__delay_ms(10);
     }
 }

@@ -97,6 +97,7 @@ void INT1_ISR(void)
 */
 void INT0_ISR(void)
 {
+    // If cal mode is enabled, make sure UC is set low and exit the ISR
     if (cal_mode == 1)
     {
         UC_SetLow();
