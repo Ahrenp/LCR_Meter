@@ -182,9 +182,7 @@ void TMR1_DefaultInterruptHandler(void){
     //Restart measurements
     EXT_INT0_InterruptEnable();
     TMR0_StartTimer();
-    UC_SetLow();
-    
-    
+    UC_SetLow();  
 }
 
 
