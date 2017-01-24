@@ -2,9 +2,12 @@
 #include "tmr0.h"
 #include "pin_manager.h"
 
+// Shared variables
 extern uint8_t range;
 extern uint16_t reading;
 extern uint8_t auto_range;
+extern uint8_t cal_mode;
+
 extern void SetRange(uint8_t new_range);
 
 /**
@@ -109,8 +112,17 @@ void TMR0_SetInterruptHandler(void* InterruptHandler){
 
 void TMR0_DefaultInterruptHandler(void)
 {    
-    //Timer has overflowed, toggle UC
-    UC_Toggle();
+    //Not in cal mode; normal operation
+    if (cal_mode == 0)
+    {
+        //Timer has overflowed, toggle UC
+        UC_Toggle();
+    }
+    else
+    // If in cal mode set UC low
+    {
+        UC_SetLow();
+    }
     
     //Autorange increase range
     if (auto_range == 1)

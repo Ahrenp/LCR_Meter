@@ -9015,6 +9015,7 @@ uint8_t auto_range = 1;
 uint8_t stored_range = 0;
 
 
+uint8_t cal_mode = 0;
 
 
 void SetRange(uint8_t new_range)
@@ -9027,7 +9028,7 @@ LATC &= ~(1 << R1_BIT[new_range - 1]);
 LATB &= ~(1 << RSET_BIT[new_range - 1]);
 }
 
-# 56
+# 57
 void INT1_ISR(void)
 {
 
@@ -9057,7 +9058,7 @@ auto_range = 1;
 }
 
 
-printf("Range: %d\r\n", range);
+printf("\r\nSetting range = %d\r\n", range);
 
 SetRange(range);
 
@@ -9066,9 +9067,15 @@ SetRange(range);
 (INTCON3bits.INT1IF = 0);
 }
 
-# 97
+# 98
 void INT0_ISR(void)
 {
+if (cal_mode == 1)
+{
+do { LATCbits.LATC7 = 0; } while(0);
+return;
+}
+
 
 TMR0_StopTimer();
 reading = TMR0_ReadTimer();
@@ -9104,16 +9111,16 @@ TMR0_StartTimer();
 (INTCONbits.INT0IF = 0);
 }
 
-# 144
+# 151
 void EXT_INT_Initialize(void)
 {
 
-# 152
+# 159
 (INTCON3bits.INT1IF = 0);
 (INTCON2bits.INTEDG1 = 0);
 (INTCON3bits.INT1IE = 1);
 
-# 162
+# 169
 (INTCONbits.INT0IF = 0);
 (INTCON2bits.INTEDG0 = 0);
 (INTCONbits.INT0IE = 1);

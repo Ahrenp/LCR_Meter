@@ -36,6 +36,7 @@ uint8_t auto_range = 1;
 uint8_t stored_range = 0;
 
 // Calibration setting - when this variable is set to 1, the UC pin stays low
+uint8_t cal_mode = 0;
 
 // Sets a range given an integer valued 1 to 5
 void SetRange(uint8_t new_range)
@@ -82,7 +83,7 @@ void INT1_ISR(void)
     }
     
     // DEBUG: Print the range that has been changed to
-    printf("Range: %d\r\n", range);
+    printf("\r\nSetting range = %d\r\n", range);
     
     SetRange(range);
     
@@ -96,6 +97,12 @@ void INT1_ISR(void)
 */
 void INT0_ISR(void)
 {
+    if (cal_mode == 1)
+    {
+        UC_SetLow();
+        return;
+    }
+    
     //Stop microsecond timer and get reading
     TMR0_StopTimer();
     reading = TMR0_ReadTimer();
