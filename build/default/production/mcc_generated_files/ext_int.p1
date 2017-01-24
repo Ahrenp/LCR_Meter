@@ -6614,9 +6614,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ext_int.c: 116: result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
 "116
 [e = _result -> / -> * *U + &U _cal_current * -> -> - -> _range `i -> 1 `i `ui `ux -> -> # *U &U _cal_current `ui `ux - -> _reading `f -> -> 27 `i `f `d .3.01004 `f ]
-[; ;ext_int.c: 119: printf("Capacitance: %0.2f pF (Count: %u) - Range: %d (%d)\r\n", result, reading, range, auto_range);
-"119
-[e ( _printf , , , , (. :s 2C -> _result `d _reading -> _range `i -> _auto_range `i ]
 [; ;ext_int.c: 122: if (auto_range == 1)
 "122
 [e $ ! == -> _auto_range `i -> 1 `i 833  ]
@@ -6693,6 +6690,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "173
 [e :UE 838 ]
 }
-[p f _printf 8463492 ]
+[p f _printf 8388736 ]
 [a 1C 13 10 83 101 116 116 105 110 103 32 114 97 110 103 101 32 61 32 37 100 13 10 0 ]
-[a 2C 67 97 112 97 99 105 116 97 110 99 101 58 32 37 48 46 50 102 32 112 70 32 40 67 111 117 110 116 58 32 37 117 41 32 45 32 82 97 110 103 101 58 32 37 100 32 40 37 100 41 13 10 0 ]
+

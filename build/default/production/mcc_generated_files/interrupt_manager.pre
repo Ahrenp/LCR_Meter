@@ -8160,15 +8160,6 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdbool.h"
 typedef unsigned char bool;
 
-# 406 "mcc_generated_files/ext_int.h"
-void EXT_INT_Initialize(void);
-
-# 428
-void INT1_ISR(void);
-
-# 447
-void INT0_ISR(void);
-
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -8241,6 +8232,15 @@ uint8_t EUSART1_Read(void);
 # 135
 void EUSART1_Write(uint8_t txData);
 
+# 406 "mcc_generated_files/ext_int.h"
+void EXT_INT_Initialize(void);
+
+# 428
+void INT1_ISR(void);
+
+# 447
+void INT0_ISR(void);
+
 # 99 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
 
@@ -8271,10 +8271,46 @@ extern void (*TMR0_InterruptHandler)(void);
 # 344
 void TMR0_DefaultInterruptHandler(void);
 
-# 68 "mcc_generated_files/mcc.h"
+# 93 "mcc_generated_files/tmr1.h"
+void TMR1_Initialize(void);
+
+# 124
+void TMR1_StartTimer(void);
+
+# 154
+void TMR1_StopTimer(void);
+
+# 188
+uint16_t TMR1_ReadTimer(void);
+
+# 214
+void TMR1_WriteTimer(uint16_t timerVal);
+
+# 246
+void TMR1_Reload(void);
+
+# 287
+void TMR1_StartSinglePulseAcquisition(void);
+
+# 328
+uint8_t TMR1_CheckGateValueStatus(void);
+
+# 344
+void TMR1_ISR(void);
+
+# 363
+void TMR1_SetInterruptHandler(void *InterruptHandler);
+
+# 381
+extern void (*TMR1_InterruptHandler)(void);
+
+# 399
+void TMR1_DefaultInterruptHandler(void);
+
+# 69 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 81
+# 82
 void OSCILLATOR_Initialize(void);
 
 # 4 "mcc_generated_files/interrupt_manager.c"
@@ -8287,7 +8323,11 @@ RCONbits.IPEN = 0;
 void interrupt INTERRUPT_InterruptManager (void)
 {
 
-if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
+if(INTCONbits.PEIE == 1 && PIE1bits.TMR1IE == 1 && PIR1bits.TMR1IF == 1)
+{
+TMR1_ISR();
+}
+else if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
 {
 INT1_ISR();
 }

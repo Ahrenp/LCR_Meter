@@ -8160,15 +8160,6 @@ void interrupt INTERRUPT_InterruptManager(void);
 # 122
 void INTERRUPT_Initialize (void);
 
-# 406 "mcc_generated_files/ext_int.h"
-void EXT_INT_Initialize(void);
-
-# 428
-void INT1_ISR(void);
-
-# 447
-void INT0_ISR(void);
-
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -8241,6 +8232,15 @@ uint8_t EUSART1_Read(void);
 # 135
 void EUSART1_Write(uint8_t txData);
 
+# 406 "mcc_generated_files/ext_int.h"
+void EXT_INT_Initialize(void);
+
+# 428
+void INT1_ISR(void);
+
+# 447
+void INT0_ISR(void);
+
 # 99 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
 
@@ -8271,10 +8271,46 @@ extern void (*TMR0_InterruptHandler)(void);
 # 344
 void TMR0_DefaultInterruptHandler(void);
 
-# 68 "mcc_generated_files/mcc.h"
+# 93 "mcc_generated_files/tmr1.h"
+void TMR1_Initialize(void);
+
+# 124
+void TMR1_StartTimer(void);
+
+# 154
+void TMR1_StopTimer(void);
+
+# 188
+uint16_t TMR1_ReadTimer(void);
+
+# 214
+void TMR1_WriteTimer(uint16_t timerVal);
+
+# 246
+void TMR1_Reload(void);
+
+# 287
+void TMR1_StartSinglePulseAcquisition(void);
+
+# 328
+uint8_t TMR1_CheckGateValueStatus(void);
+
+# 344
+void TMR1_ISR(void);
+
+# 363
+void TMR1_SetInterruptHandler(void *InterruptHandler);
+
+# 381
+extern void (*TMR1_InterruptHandler)(void);
+
+# 399
+void TMR1_DefaultInterruptHandler(void);
+
+# 69 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 81
+# 82
 void OSCILLATOR_Initialize(void);
 
 
@@ -8385,22 +8421,18 @@ void lcd_shiftLeft();
 void _lcd_Port(char a);
 
 # 4 "main.c"
-extern uint16_t reading;
-extern float result;
-char units[2] = "pF";
-
 void main(void)
 {
 
 SYSTEM_Initialize();
 
-# 30
+# 26
 (INTCONbits.GIE = 1);
 
 
 (INTCONbits.PEIE = 1);
 
-# 41
+# 37
 lcd_init();
 lcd_clear();
 
@@ -8415,28 +8447,6 @@ LATB &= ~(1 << 3);
 
 while (1)
 {
-
-char cap_string[16];
-
-
-if (result >= 1000000.0)
-{
-sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
-}
-else if (result < 1000000 && result >= 1000.0)
-{
-sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
-}
-else if (result < 0)
-{
-sprintf(cap_string, "C=ERROR");
-}
-else
-{
-sprintf(cap_string, "C=%12.0fpF", result);
-}
-
-lcd_sendStringToPos(1, 1, cap_string);
 
 }
 }

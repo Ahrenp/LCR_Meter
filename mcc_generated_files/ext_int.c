@@ -116,7 +116,7 @@ void INT0_ISR(void)
     result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
     
     //Print capacitance reading
-    printf("Capacitance: %0.2f pF (Count: %u) - Range: %d (%d)\r\n", result, reading, range, auto_range);
+    //printf("Capacitance: %0.2f pF (Count: %u) - Range: %d (%d)\r\n", result, reading, range, auto_range);
     
     //Autorange decrease range
     if (auto_range == 1)

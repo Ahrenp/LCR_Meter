@@ -13,7 +13,7 @@
   @Description
     This header file provides APIs for driver for EUSART1.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.0
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC18F25K22
         Driver Version    :  2.00
     The generated drivers are tested against the following:

@@ -1,67 +1,5 @@
 
-# 1 "mcc_generated_files/mcc.c"
-
-
-# 49
-#pragma config FOSC = HSMP
-#pragma config PLLCFG = OFF
-#pragma config PRICLKEN = ON
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config PWRTEN = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 190
-
-
-#pragma config WDTEN = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = PORTC1
-#pragma config PBADEN = ON
-#pragma config CCP3MX = PORTB5
-#pragma config HFOFST = ON
-#pragma config T3CMX = PORTC0
-#pragma config P2BMX = PORTB5
-#pragma config MCLRE = EXTMCLR
-
-
-#pragma config STVREN = ON
-#pragma config LVP = ON
-#pragma config XINST = OFF
-#pragma config DEBUG = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
+# 1 "mcc_generated_files/tmr1.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -8117,11 +8055,71 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 333 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\__size_t.h"
+typedef unsigned size_t;
 
-# 345
-void PIN_MANAGER_IOC(void);
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdbool.h"
+typedef unsigned char bool;
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdint.h"
 typedef signed char int8_t;
@@ -8213,126 +8211,6 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdbool.h"
-typedef unsigned char bool;
-
-# 110 "mcc_generated_files/interrupt_manager.h"
-void interrupt INTERRUPT_InterruptManager(void);
-
-# 122
-void INTERRUPT_Initialize (void);
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 95 "mcc_generated_files/eusart1.h"
-void EUSART1_Initialize(void);
-
-# 115
-uint8_t EUSART1_Read(void);
-
-# 135
-void EUSART1_Write(uint8_t txData);
-
-# 406 "mcc_generated_files/ext_int.h"
-void EXT_INT_Initialize(void);
-
-# 428
-void INT1_ISR(void);
-
-# 447
-void INT0_ISR(void);
-
-# 99 "mcc_generated_files/tmr0.h"
-void TMR0_Initialize(void);
-
-# 128
-void TMR0_StartTimer(void);
-
-# 160
-void TMR0_StopTimer(void);
-
-# 196
-uint16_t TMR0_ReadTimer(void);
-
-# 235
-void TMR0_WriteTimer(uint16_t timerVal);
-
-# 271
-void TMR0_Reload(void);
-
-# 289
-void TMR0_ISR(void);
-
-# 308
-void TMR0_SetInterruptHandler(void *InterruptHandler);
-
-# 326
-extern void (*TMR0_InterruptHandler)(void);
-
-# 344
-void TMR0_DefaultInterruptHandler(void);
-
 # 93 "mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
 
@@ -8369,33 +8247,326 @@ extern void (*TMR1_InterruptHandler)(void);
 # 399
 void TMR1_DefaultInterruptHandler(void);
 
-# 69 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
 
-# 82
-void OSCILLATOR_Initialize(void);
+# 4 "mcc_generated_files/../lcd.h"
+#pragma warning disable 520
+#pragma warning disable 752
 
-# 111 "mcc_generated_files/mcc.c"
-void SYSTEM_Initialize(void)
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.40\include\stdlib.h"
+typedef unsigned short wchar_t;
+
+# 15
+typedef struct {
+int rem;
+int quot;
+} div_t;
+typedef struct {
+unsigned rem;
+unsigned quot;
+} udiv_t;
+typedef struct {
+long quot;
+long rem;
+} ldiv_t;
+typedef struct {
+unsigned long quot;
+unsigned long rem;
+} uldiv_t;
+
+# 53
+extern double atof(const char *);
+extern double strtod(const char *, const char **);
+extern int atoi(const char *);
+extern unsigned xtoi(const char *);
+extern long atol(const char *);
+extern long strtol(const char *, char **, int);
+
+extern int rand(void);
+extern void srand(unsigned int);
+extern void * calloc(size_t, size_t);
+extern div_t div(int numer, int denom);
+extern udiv_t udiv(unsigned numer, unsigned denom);
+extern ldiv_t ldiv(long numer, long denom);
+extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+extern unsigned int _rotl(unsigned int value, unsigned int shift);
+extern unsigned int _rotr(unsigned int value, unsigned int shift);
+
+
+
+
+extern void * malloc(size_t);
+extern void free(void *);
+extern void * realloc(void *, size_t);
+
+# 86
+extern int atexit(void (*)(void));
+extern char * getenv(const char *);
+extern char ** environ;
+extern int system(char *);
+extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+extern int abs(int);
+extern long labs(long);
+
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
+
+
+
+
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
+
+extern char * ftoa(float f, int * status);
+
+# 28 "mcc_generated_files/../lcd.h"
+void lcd_sendCommand(char a);
+
+void lcd_clear();
+
+void lcd_setPosition(unsigned char x, unsigned char y);
+
+void lcd_init(void);
+
+void lcd_sendChar(const char a);
+
+void lcd_sendString(const char * a);
+
+void lcd_sendStringToPos(unsigned char x, unsigned char y, const char * charString);
+
+void lcd_sendInt(int number);
+
+void lcd_sendIntToPos(unsigned char x, unsigned char y, int number);
+
+void lcd_sendFloat(float number);
+
+void lcd_sendFloatToPos(unsigned char x, unsigned char y, float number);
+
+void lcd_sendUInt(unsigned int number);
+
+void lcd_sendUIntToPos(unsigned char x, unsigned char y, unsigned int number);
+
+void lcd_shiftRight();
+
+void lcd_shiftLeft();
+
+void _lcd_Port(char a);
+
+# 99 "mcc_generated_files/tmr0.h"
+void TMR0_Initialize(void);
+
+# 128
+void TMR0_StartTimer(void);
+
+# 160
+void TMR0_StopTimer(void);
+
+# 196
+uint16_t TMR0_ReadTimer(void);
+
+# 235
+void TMR0_WriteTimer(uint16_t timerVal);
+
+# 271
+void TMR0_Reload(void);
+
+# 289
+void TMR0_ISR(void);
+
+# 308
+void TMR0_SetInterruptHandler(void *InterruptHandler);
+
+# 326
+extern void (*TMR0_InterruptHandler)(void);
+
+# 344
+void TMR0_DefaultInterruptHandler(void);
+
+# 406 "mcc_generated_files/ext_int.h"
+void EXT_INT_Initialize(void);
+
+# 428
+void INT1_ISR(void);
+
+# 447
+void INT0_ISR(void);
+
+# 333 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+
+# 345
+void PIN_MANAGER_IOC(void);
+
+# 16 "mcc_generated_files/tmr1.c"
+volatile uint16_t timer1ReloadVal;
+void (*TMR1_InterruptHandler)(void);
+
+extern uint16_t reading;
+extern float result;
+char units[2] = "pF";
+
+extern uint8_t range, auto_range;
+
+# 29
+void TMR1_Initialize(void)
 {
 
-INTERRUPT_Initialize();
-PIN_MANAGER_Initialize();
-OSCILLATOR_Initialize();
-EXT_INT_Initialize();
-TMR1_Initialize();
-TMR0_Initialize();
-EUSART1_Initialize();
+
+
+T1CON = 0x30;
+
+
+T1GCON = 0x00;
+
+
+TMR1H = 0x02;
+
+
+TMR1L = 0x18;
+
+
+timer1ReloadVal=TMR1;
+
+
+PIR1bits.TMR1IF = 0;
+
+
+PIE1bits.TMR1IE = 1;
+
+
+TMR1_SetInterruptHandler(TMR1_DefaultInterruptHandler);
+
+
+TMR1_StartTimer();
 }
 
-void OSCILLATOR_Initialize(void)
+void TMR1_StartTimer(void)
 {
 
-OSCCON = 0x70;
+T1CONbits.TMR1ON = 1;
+}
 
-OSCCON2 = 0x04;
+void TMR1_StopTimer(void)
+{
 
-OSCTUNE = 0x00;
+T1CONbits.TMR1ON = 0;
+}
+
+uint16_t TMR1_ReadTimer(void)
+{
+uint16_t readVal;
+uint8_t readValHigh;
+uint8_t readValLow;
+
+readValLow = TMR1L;
+readValHigh = TMR1H;
+
+readVal = ((uint16_t)readValHigh << 8) | readValLow;
+
+return readVal;
+}
+
+void TMR1_WriteTimer(uint16_t timerVal)
+{
+if (T1CONbits.T1SYNC == 1)
+{
+
+T1CONbits.TMR1ON = 0;
+
+
+TMR1H = (timerVal >> 8);
+TMR1L = (uint8_t) timerVal;
+
+
+T1CONbits.TMR1ON =1;
+}
+else
+{
+
+TMR1H = (timerVal >> 8);
+TMR1L = (uint8_t) timerVal;
+}
+}
+
+void TMR1_Reload(void)
+{
+
+TMR1H = (timer1ReloadVal >> 8);
+TMR1L = (uint8_t) timer1ReloadVal;
+}
+
+void TMR1_StartSinglePulseAcquisition(void)
+{
+T1GCONbits.T1GGO = 1;
+}
+
+uint8_t TMR1_CheckGateValueStatus(void)
+{
+return T1GCONbits.T1GVAL;
+}
+
+void TMR1_ISR(void)
+{
+
+
+PIR1bits.TMR1IF = 0;
+
+
+TMR1H = (timer1ReloadVal >> 8);
+TMR1L = (uint8_t) timer1ReloadVal;
+
+if(TMR1_InterruptHandler)
+{
+TMR1_InterruptHandler();
+}
+}
+
+
+void TMR1_SetInterruptHandler(void* InterruptHandler){
+TMR1_InterruptHandler = InterruptHandler;
+}
+
+void TMR1_DefaultInterruptHandler(void){
+
+
+TMR0_StopTimer();
+TMR0_Reload();
+(INTCONbits.INT0IE = 0);
+do { LATCbits.LATC7 = 1; } while(0);
+
+
+char cap_string[16];
+char range_string[16];
+
+
+if (result >= 1000000.0)
+{
+sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
+}
+else if (result < 1000000 && result >= 1000.0)
+{
+sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
+}
+else if (result < 0)
+{
+sprintf(cap_string, "C=ERROR         ");
+}
+else
+{
+sprintf(cap_string, "C=%12.0fpF", result);
+}
+
+sprintf(range_string, "Range %d (%d)   ", range, auto_range);
+
+lcd_sendStringToPos(1, 1, cap_string);
+lcd_sendStringToPos(1, 2, range_string);
+
+
+(INTCONbits.INT0IE = 1);
+TMR0_StartTimer();
+do { LATCbits.LATC7 = 0; } while(0);
 
 
 }

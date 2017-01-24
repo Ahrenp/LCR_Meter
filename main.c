@@ -1,10 +1,6 @@
 #include "mcc_generated_files/mcc.h"
 #include "lcd.h"
 
-extern uint16_t reading;
-extern float result;
-char units[2] = "pF";
-
 void main(void)
 {
     // Initialize the device
@@ -52,28 +48,6 @@ void main(void)
     
     while (1)
     {        
-        //Update display
-        char cap_string[16];
         
-        //Units logic
-        if (result >= 1000000.0)
-        {
-            sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
-        }
-        else if (result < 1000000 && result >= 1000.0)
-        {
-            sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
-        }
-        else if (result < 0)
-        {
-            sprintf(cap_string, "C=ERROR");
-        }
-        else
-        {
-            sprintf(cap_string, "C=%12.0fpF", result);
-        }
-
-        lcd_sendStringToPos(1, 1, cap_string);
-        //__delay_ms(10);
     }
 }

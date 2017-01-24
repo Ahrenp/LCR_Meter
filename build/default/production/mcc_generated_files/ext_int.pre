@@ -8351,10 +8351,7 @@ do { LATCbits.LATC7 = 1; } while(0);
 
 result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
 
-
-printf("Capacitance: %0.2f pF (Count: %u) - Range: %d (%d)\r\n", result, reading, range, auto_range);
-
-
+# 122
 if (auto_range == 1)
 {
 if (reading < 1000 && range > 2)
