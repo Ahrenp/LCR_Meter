@@ -6,10 +6,12 @@
 #include "ext_int.h"
 #include "tmr0.h"
 #include "pin_manager.h"
+#include "../lcd.h"
 
 #define MIN_COUNTS 1000
 #define MIN_RANGE 2
 #define MAX_RANGE 5
+#define AV_COUNT 10
 
 //***User Area Begin->code: Add External Interrupt handler specific headers
 
@@ -24,7 +26,8 @@ const float cal_current[] = {0.50, 7.8, 108.43, 4430.0, 112000.0};
 // Functional variables
 // Reading in integer form and result in float form
 uint16_t reading;
-float result;
+uint8_t av_count = 0;
+float result = 0;
 
 // Initial range on boot up
 uint8_t range = 2;
@@ -47,6 +50,36 @@ void SetRange(uint8_t new_range)
 
     LATC &= ~(1 << R1_BIT[new_range - 1]);
     LATB &= ~(1 << RSET_BIT[new_range - 1]);
+}
+
+void UpdateDisplay()
+{
+    //Update display
+    char cap_string[16];
+    char range_string[16];
+
+    //Units logic
+    if (result >= 1000000.0)
+    {
+        sprintf(cap_string, "C=%12.6fuF", result / 1000000.0);
+    }
+    else if (result < 1000000 && result >= 1000.0)
+    {
+        sprintf(cap_string, "C=%12.3fnF", result / 1000.0);
+    }
+    else if (result < 0)
+    {
+        sprintf(cap_string, "C=ERROR         ");
+    }
+    else
+    {
+        sprintf(cap_string, "C=%12.0fpF", result);
+    }
+
+    sprintf(range_string, "Range %d (%d)%d", range, auto_range, av_count);
+    
+    lcd_sendStringToPos(1, 1, cap_string);
+    lcd_sendStringToPos(1, 2, range_string);
 }
 
 //***User Area End->code: Add External Interrupt handler specific headers
@@ -113,7 +146,15 @@ void INT0_ISR(void)
     
     //Compute capacitance reading in pF
     //Current in uA
-    result = cal_current[range - 1] * ((float)reading - 27) / 3.01004;
+    result += cal_current[range - 1] * ((float)reading - 27) / 3.01004;
+    av_count += 1;
+    
+    if (av_count == AV_COUNT)
+    {
+        result /= (AV_COUNT);
+        UpdateDisplay();
+        av_count = 0;
+    }
     
     //Print capacitance reading
     //printf("Capacitance: %0.2f pF (Count: %u) - Range: %d (%d)\r\n", result, reading, range, auto_range);
@@ -127,6 +168,9 @@ void INT0_ISR(void)
             SetRange(range);
         }
     }
+    
+    // Delay to make sure capacitor drains
+    __delay_ms(range);
     
     //Reload the timer with inital values for its specified (60ms) range
     TMR0_Reload();

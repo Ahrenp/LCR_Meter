@@ -10,11 +10,7 @@ void  INTERRUPT_Initialize (void)
 void interrupt INTERRUPT_InterruptManager (void)
 {
     // interrupt handler
-    if(INTCONbits.PEIE == 1 && PIE1bits.TMR1IE == 1 && PIR1bits.TMR1IF == 1)
-    {
-        TMR1_ISR();
-    }
-    else if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
+    if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
     {
         INT1_ISR();
     }

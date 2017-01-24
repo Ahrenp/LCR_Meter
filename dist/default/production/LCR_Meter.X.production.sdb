@@ -105,13 +105,15 @@
 [v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
 "111
 [v _putch putch `(v  1 e 1 0 ]
-"42 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+"45 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _SetRange SetRange `(v  1 e 1 0 ]
-"57
+"55
+[v _UpdateDisplay UpdateDisplay `(v  1 e 1 0 ]
+"90
 [v _INT1_ISR INT1_ISR `(v  1 e 1 0 ]
-"98
+"131
 [v _INT0_ISR INT0_ISR `(v  1 e 1 0 ]
-"152
+"196
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
 "4 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
@@ -119,7 +121,7 @@
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 "111 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"123
+"122
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "51 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -140,16 +142,6 @@
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "113
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"29 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr1.c
-[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
-"61
-[v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
-"126
-[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
-"143
-[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
-"147
-[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
 "49 C:\Program Files (x86)\Microchip\xc8\v1.40\include\pic18f25k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
 "93
@@ -160,7 +152,7 @@
 [v _WPUB WPUB `VEuc  1 e 1 @3937 ]
 "7154
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-[s S811 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S778 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -170,7 +162,7 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "7181
-[s S820 . 1 `uc 1 LA0 1 0 :1:0 
+[s S787 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -179,13 +171,13 @@
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S829 . 1 `S811 1 . 1 0 `S820 1 . 1 0 ]
-[v _LATAbits LATAbits `VES829  1 e 1 @3977 ]
+[u S796 . 1 `S778 1 . 1 0 `S787 1 . 1 0 ]
+[v _LATAbits LATAbits `VES796  1 e 1 @3977 ]
 "7265
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
 "7376
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S68 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S81 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -195,7 +187,7 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "7403
-[s S77 . 1 `uc 1 LC0 1 0 :1:0 
+[s S90 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -204,8 +196,8 @@
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S86 . 1 `S68 1 . 1 0 `S77 1 . 1 0 ]
-[v _LATCbits LATCbits `VES86  1 e 1 @3979 ]
+[u S99 . 1 `S81 1 . 1 0 `S90 1 . 1 0 ]
+[v _LATCbits LATCbits `VES99  1 e 1 @3979 ]
 "7487
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "7708
@@ -214,23 +206,7 @@
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 "8170
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
-[s S381 . 1 `uc 1 TMR1IE 1 0 :1:0 
-`uc 1 TMR2IE 1 0 :1:1 
-`uc 1 CCP1IE 1 0 :1:2 
-`uc 1 SSP1IE 1 0 :1:3 
-`uc 1 TX1IE 1 0 :1:4 
-`uc 1 RC1IE 1 0 :1:5 
-`uc 1 ADIE 1 0 :1:6 
-]
-"8540
-[s S389 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 SSPIE 1 0 :1:3 
-`uc 1 TXIE 1 0 :1:4 
-`uc 1 RCIE 1 0 :1:5 
-]
-[u S394 . 1 `S381 1 . 1 0 `S389 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES394  1 e 1 @3997 ]
-[s S411 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S674 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -239,16 +215,16 @@
 `uc 1 ADIF 1 0 :1:6 
 ]
 "8616
-[s S419 . 1 `uc 1 . 1 0 :3:0 
+[s S682 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S424 . 1 `S411 1 . 1 0 `S419 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES424  1 e 1 @3998 ]
+[u S687 . 1 `S674 1 . 1 0 `S682 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES687  1 e 1 @3998 ]
 "9436
 [v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
-[s S665 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S604 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -258,10 +234,10 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "9489
-[s S674 . 1 `uc 1 . 1 0 :3:0 
+[s S613 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S677 . 1 `uc 1 RX9D1 1 0 :1:0 
+[s S616 . 1 `uc 1 RX9D1 1 0 :1:0 
 `uc 1 OERR1 1 0 :1:1 
 `uc 1 FERR1 1 0 :1:2 
 `uc 1 ADDEN1 1 0 :1:3 
@@ -270,18 +246,18 @@
 `uc 1 RX91 1 0 :1:6 
 `uc 1 SPEN1 1 0 :1:7 
 ]
-[s S686 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S625 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S690 . 1 `uc 1 . 1 0 :6:0 
+[s S629 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S693 . 1 `uc 1 . 1 0 :5:0 
+[s S632 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S696 . 1 `S665 1 . 1 0 `S674 1 . 1 0 `S677 1 . 1 0 `S686 1 . 1 0 `S690 1 . 1 0 `S693 1 . 1 0 ]
-[v _RCSTA1bits RCSTA1bits `VES696  1 e 1 @4011 ]
+[u S635 . 1 `S604 1 . 1 0 `S613 1 . 1 0 `S616 1 . 1 0 `S625 1 . 1 0 `S629 1 . 1 0 `S632 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES635  1 e 1 @4011 ]
 "9891
 [v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
 "10265
@@ -294,79 +270,22 @@
 [v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4016 ]
 "11452
 [v _BAUDCON1 BAUDCON1 `VEuc  1 e 1 @4024 ]
-"14579
-[v _T1GCON T1GCON `VEuc  1 e 1 @4044 ]
-[s S1047 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 T1GGO_NOT_DONE 1 0 :1:3 
-]
-"14609
-[s S1050 . 1 `uc 1 T1GSS 1 0 :2:0 
-`uc 1 T1GVAL 1 0 :1:2 
-`uc 1 T1GGO_nDONE 1 0 :1:3 
-`uc 1 T1GSPM 1 0 :1:4 
-`uc 1 T1GTM 1 0 :1:5 
-`uc 1 T1GPOL 1 0 :1:6 
-`uc 1 TMR1GE 1 0 :1:7 
-]
-[s S1058 . 1 `uc 1 T1GSS0 1 0 :1:0 
-`uc 1 T1GSS1 1 0 :1:1 
-`uc 1 . 1 0 :1:2 
-`uc 1 T1G_DONE 1 0 :1:3 
-]
-[s S1063 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 T1GGO 1 0 :1:3 
-]
-[u S1066 . 1 `S1047 1 . 1 0 `S1050 1 . 1 0 `S1058 1 . 1 0 `S1063 1 . 1 0 ]
-[v _T1GCONbits T1GCONbits `VES1066  1 e 1 @4044 ]
-"14673
-[v _T1CON T1CON `VEuc  1 e 1 @4045 ]
-[s S997 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 NOT_T1SYNC 1 0 :1:2 
-]
-"14706
-[s S1000 . 1 `uc 1 TMR1ON 1 0 :1:0 
-`uc 1 T1RD16 1 0 :1:1 
-`uc 1 nT1SYNC 1 0 :1:2 
-`uc 1 T1SOSCEN 1 0 :1:3 
-`uc 1 T1CKPS 1 0 :2:4 
-`uc 1 TMR1CS 1 0 :2:6 
-]
-[s S1007 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 RD16 1 0 :1:1 
-`uc 1 T1SYNC 1 0 :1:2 
-`uc 1 T1OSCEN 1 0 :1:3 
-`uc 1 T1CKPS0 1 0 :1:4 
-`uc 1 T1CKPS1 1 0 :1:5 
-`uc 1 TMR1CS0 1 0 :1:6 
-`uc 1 TMR1CS1 1 0 :1:7 
-]
-[s S1016 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 SOSCEN 1 0 :1:3 
-]
-[u S1019 . 1 `S997 1 . 1 0 `S1000 1 . 1 0 `S1007 1 . 1 0 `S1016 1 . 1 0 ]
-[v _T1CONbits T1CONbits `VES1019  1 e 1 @4045 ]
-"14785
-[v _TMR1 TMR1 `VEus  1 e 2 @4046 ]
-"14791
-[v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
-"14810
-[v _TMR1H TMR1H `VEuc  1 e 1 @4047 ]
-[s S287 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S312 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "14872
-[s S289 . 1 `uc 1 . 1 0 :1:0 
+[s S314 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S292 . 1 `uc 1 . 1 0 :2:0 
+[s S317 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S295 . 1 `uc 1 . 1 0 :3:0 
+[s S320 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S298 . 1 `uc 1 . 1 0 :4:0 
+[s S323 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S301 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S326 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -375,21 +294,21 @@
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S310 . 1 `uc 1 BOR 1 0 :1:0 
+[s S335 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S316 . 1 `S287 1 . 1 0 `S289 1 . 1 0 `S292 1 . 1 0 `S295 1 . 1 0 `S298 1 . 1 0 `S301 1 . 1 0 `S310 1 . 1 0 ]
-[v _RCONbits RCONbits `VES316  1 e 1 @4048 ]
+[u S341 . 1 `S312 1 . 1 0 `S314 1 . 1 0 `S317 1 . 1 0 `S320 1 . 1 0 `S323 1 . 1 0 `S326 1 . 1 0 `S335 1 . 1 0 ]
+[v _RCONbits RCONbits `VES341  1 e 1 @4048 ]
 "14988
 [v _OSCCON2 OSCCON2 `VEuc  1 e 1 @4050 ]
 "15044
 [v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
 "15126
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
-[s S549 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S488 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -397,17 +316,17 @@
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "15146
-[s S556 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S495 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
-[u S560 . 1 `S549 1 . 1 0 `S556 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES560  1 e 1 @4053 ]
+[u S499 . 1 `S488 1 . 1 0 `S495 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES499  1 e 1 @4053 ]
 "15201
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "15220
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S28 . 1 `uc 1 INT1IF 1 0 :1:0 
+[s S41 . 1 `uc 1 INT1IF 1 0 :1:0 
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -417,7 +336,7 @@
 `uc 1 INT2IP 1 0 :1:7 
 ]
 "15757
-[s S37 . 1 `uc 1 INT1F 1 0 :1:0 
+[s S50 . 1 `uc 1 INT1F 1 0 :1:0 
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -426,13 +345,13 @@
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
-[u S46 . 1 `S28 1 . 1 0 `S37 1 . 1 0 ]
-[v _INTCON3bits INTCON3bits `VES46  1 e 1 @4080 ]
-[s S173 . 1 `uc 1 . 1 0 :7:0 
+[u S59 . 1 `S41 1 . 1 0 `S50 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES59  1 e 1 @4080 ]
+[s S192 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "15846
-[s S176 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S195 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -441,12 +360,12 @@
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S185 . 1 `uc 1 . 1 0 :7:0 
+[s S204 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S188 . 1 `S173 1 . 1 0 `S176 1 . 1 0 `S185 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES188  1 e 1 @4081 ]
-[s S124 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S207 . 1 `S192 1 . 1 0 `S195 1 . 1 0 `S204 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES207  1 e 1 @4081 ]
+[s S143 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -456,7 +375,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "15922
-[s S133 . 1 `uc 1 . 1 0 :1:0 
+[s S152 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -465,44 +384,42 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S142 . 1 `uc 1 . 1 0 :6:0 
+[s S161 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S146 . 1 `S124 1 . 1 0 `S133 1 . 1 0 `S142 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES146  1 e 1 @4082 ]
+[u S165 . 1 `S143 1 . 1 0 `S152 1 . 1 0 `S161 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES165  1 e 1 @4082 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\doprnt.c
 [v _dpowers dpowers `C[10]ul  1 s 40 dpowers ]
 "7 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\powers.c
 [v __powers_ _powers_ `C[13]d  1 e 39 0 ]
 "39
 [v __npowers_ _npowers_ `C[13]d  1 e 39 0 ]
-"18 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+"20 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _R1_BIT R1_BIT `C[5]uc  1 e 5 0 ]
-"19
+"21
 [v _RSET_BIT RSET_BIT `C[5]uc  1 e 5 0 ]
-"22
+"24
 [v _cal_current cal_current `C[5]f  1 e 15 0 ]
-"26
+"28
 [v _reading reading `ui  1 e 2 0 ]
-"27
-[v _result result `f  1 e 3 0 ]
+"29
+[v _av_count av_count `uc  1 e 1 0 ]
 "30
-[v _range range `uc  1 e 1 0 ]
+[v _result result `f  1 e 3 0 ]
 "33
-[v _auto_range auto_range `uc  1 e 1 0 ]
+[v _range range `uc  1 e 1 0 ]
 "36
-[v _stored_range stored_range `uc  1 e 1 0 ]
+[v _auto_range auto_range `uc  1 e 1 0 ]
 "39
+[v _stored_range stored_range `uc  1 e 1 0 ]
+"42
 [v _cal_mode cal_mode `uc  1 e 1 0 ]
 "17 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
 "19
 [v _timer0ReloadVal timer0ReloadVal `VEui  1 e 2 0 ]
-"16 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr1.c
-[v _timer1ReloadVal timer1ReloadVal `VEui  1 e 2 0 ]
-"17
-[v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
 "4 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
@@ -539,23 +456,7 @@
 "111 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"121
-} 0
-"29 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr1.c
-[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
-{
-"59
-} 0
-"61
-[v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
-{
-"65
-} 0
-"143
-[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
-{
-[v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.2v  1 p 2 0 ]
-"145
+"120
 } 0
 "22 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
@@ -578,20 +479,20 @@
 {
 "85
 } 0
-"123 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/mcc.c
+"122 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"133
+"132
 } 0
 "4 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
 {
 "8
 } 0
-"152 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+"196 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
 {
-"173
+"217
 } 0
 "55 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
@@ -601,100 +502,7 @@
 "10 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
-"33
-} 0
-"126 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr1.c
-[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
-{
-"140
-} 0
-"147
-[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
-{
-"156
-[v TMR1_DefaultInterruptHandler@cap_string cap_string `[16]uc  1 a 16 39 ]
-"157
-[v TMR1_DefaultInterruptHandler@range_string range_string `[16]uc  1 a 16 23 ]
-"188
-} 0
-"13 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\sprintf.c
-[v _sprintf sprintf `(i  1 e 2 0 ]
-{
-[s S1207 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
 "29
-[v sprintf@pb pb `S1207  1 a 4 85 ]
-"28
-[v sprintf@ap ap `[1]*.39v  1 a 2 83 ]
-"13
-[v sprintf@wh wh `*.39uc  1 p 2 75 ]
-[v sprintf@f f `*.25Cuc  1 p 2 77 ]
-"38
-} 0
-"81 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\lcd.c
-[v _lcd_sendStringToPos lcd_sendStringToPos `(v  1 e 1 0 ]
-{
-[v lcd_sendStringToPos@x x `uc  1 a 1 wreg ]
-[v lcd_sendStringToPos@x x `uc  1 a 1 wreg ]
-[v lcd_sendStringToPos@y y `uc  1 p 1 8 ]
-[v lcd_sendStringToPos@charString charString `*.39Cuc  1 p 2 9 ]
-"83
-[v lcd_sendStringToPos@x x `uc  1 a 1 11 ]
-"85
-} 0
-"18
-[v _lcd_setPosition lcd_setPosition `(v  1 e 1 0 ]
-{
-[v lcd_setPosition@x x `uc  1 a 1 wreg ]
-"20
-[v lcd_setPosition@temp temp `uc  1 a 1 7 ]
-[v lcd_setPosition@j j `uc  1 a 1 6 ]
-[v lcd_setPosition@i i `uc  1 a 1 5 ]
-"18
-[v lcd_setPosition@x x `uc  1 a 1 wreg ]
-[v lcd_setPosition@y y `uc  1 p 1 3 ]
-"21
-[v lcd_setPosition@x x `uc  1 a 1 4 ]
-"37
-} 0
-"3
-[v i2_lcd_sendCommand lcd_sendCommand `(v  1 e 1 0 ]
-{
-[v i2lcd_sendCommand@a a `uc  1 a 1 wreg ]
-[v i2lcd_sendCommand@a a `uc  1 a 1 wreg ]
-"5
-[v i2lcd_sendCommand@a a `uc  1 a 1 2 ]
-"10
-} 0
-"74
-[v _lcd_sendString lcd_sendString `(v  1 e 1 0 ]
-{
-"76
-[v lcd_sendString@i i `i  1 a 2 6 ]
-"74
-[v lcd_sendString@a a `*.39Cuc  1 p 2 4 ]
-"79
-} 0
-"58
-[v _lcd_sendChar lcd_sendChar `(v  1 e 1 0 ]
-{
-[v lcd_sendChar@a a `Cuc  1 a 1 wreg ]
-"60
-[v lcd_sendChar@y y `uc  1 a 1 2 ]
-[v lcd_sendChar@temp temp `uc  1 a 1 1 ]
-"58
-[v lcd_sendChar@a a `Cuc  1 a 1 wreg ]
-"61
-[v lcd_sendChar@a a `Cuc  1 a 1 3 ]
-"72
-} 0
-"139
-[v i2__lcd_Port _lcd_Port `(v  1 e 1 0 ]
-{
-[v i2__lcd_Port@a a `uc  1 a 1 wreg ]
-[v i2__lcd_Port@a a `uc  1 a 1 wreg ]
-"141
-[v i2__lcd_Port@a a `uc  1 a 1 0 ]
-"160
 } 0
 "92 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
@@ -706,29 +514,67 @@
 {
 "136
 } 0
-"57 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+"90 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _INT1_ISR INT1_ISR `(v  1 e 1 0 ]
 {
-"93
+"126
 } 0
 "13 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
-[s S1207 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
+[s S910 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
 "21
-[v printf@pb pb `S1207  1 a 4 81 ]
+[v printf@pb pb `S910  1 a 4 80 ]
 "15
-[v printf@ap ap `[1]*.39v  1 a 2 79 ]
+[v printf@ap ap `[1]*.39v  1 a 2 78 ]
 "13
-[v printf@f f `*.25Cuc  1 p 2 75 ]
+[v printf@f f `*.25Cuc  1 p 2 74 ]
 "28
+} 0
+"131 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+[v _INT0_ISR INT0_ISR `(v  1 e 1 0 ]
+{
+"184
+} 0
+"51 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
+[v i2_TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
+{
+"55
+} 0
+"28 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+{
+[v ___lwtoft@c c `ui  1 p 2 8 ]
+"31
+} 0
+"55 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+[v _UpdateDisplay UpdateDisplay `(v  1 e 1 0 ]
+{
+"58
+[v UpdateDisplay@cap_string cap_string `[16]uc  1 a 16 49 ]
+"59
+[v UpdateDisplay@range_string range_string `[16]uc  1 a 16 33 ]
+"83
+} 0
+"13 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[s S910 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
+"29
+[v sprintf@pb pb `S910  1 a 4 76 ]
+"28
+[v sprintf@ap ap `[1]*.39v  1 a 2 74 ]
+"13
+[v sprintf@wh wh `*.39uc  1 p 2 23 ]
+[v sprintf@f f `*.25Cuc  1 p 2 25 ]
+"38
 } 0
 "458 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\doprnt.c
 [v __doprnt _doprnt `(i  1 e 2 0 ]
 {
-[u S1252 . 4 `ul 1 vd 4 0 `d 1 integ 3 0 ]
+[u S955 . 4 `ul 1 vd 4 0 `d 1 integ 3 0 ]
 "526
-[v __doprnt@tmpval tmpval `S1252  1 a 4 13 ]
+[v __doprnt@tmpval tmpval `S955  1 a 4 13 ]
 "528
 [v __doprnt@val val `ul  1 a 4 9 ]
 "516
@@ -743,11 +589,11 @@
 [v __doprnt@width width `i  1 a 2 3 ]
 "499
 [v __doprnt@c c `c  1 a 1 22 ]
-[s S1207 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
+[s S910 __prbuf 4 `*.39uc 1 ptr 2 0 `*.37(v 1 func 2 2 ]
 "458
-[v __doprnt@pb pb `*.39S1207  1 p 2 63 ]
-[v __doprnt@f f `*.25Cuc  1 p 2 65 ]
-[v __doprnt@ap ap `*.39*.39v  1 p 2 67 ]
+[v __doprnt@pb pb `*.39S910  1 p 2 62 ]
+[v __doprnt@f f `*.25Cuc  1 p 2 64 ]
+[v __doprnt@ap ap `*.39*.39v  1 p 2 66 ]
 "1541
 } 0
 "425
@@ -756,7 +602,7 @@
 [v scale@scl scl `c  1 a 1 wreg ]
 [v scale@scl scl `c  1 a 1 wreg ]
 "428
-[v scale@scl scl `c  1 a 1 41 ]
+[v scale@scl scl `c  1 a 1 53 ]
 "441
 } 0
 "111 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/eusart1.c
@@ -791,8 +637,32 @@
 [v fround@prec prec `uc  1 a 1 wreg ]
 [v fround@prec prec `uc  1 a 1 wreg ]
 "413
-[v fround@prec prec `uc  1 a 1 44 ]
+[v fround@prec prec `uc  1 a 1 56 ]
 "418
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 18 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
+"53
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 42 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 46 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 45 ]
+[v ___ftmul@exp exp `uc  1 a 1 41 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 32 ]
+[v ___ftmul@f2 f2 `f  1 p 3 35 ]
+"157
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -879,20 +749,32 @@
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
-[v ___fttol@lval lval `ul  1 a 4 45 ]
+[v ___fttol@lval lval `ul  1 a 4 57 ]
 "46
-[v ___fttol@exp1 exp1 `uc  1 a 1 49 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 44 ]
+[v ___fttol@exp1 exp1 `uc  1 a 1 61 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 56 ]
 "44
-[v ___fttol@f1 f1 `f  1 p 3 35 ]
+[v ___fttol@f1 f1 `f  1 p 3 47 ]
 "73
 } 0
 "20 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
 {
-[v ___ftsub@f1 f1 `f  1 p 3 57 ]
-[v ___ftsub@f2 f2 `f  1 p 3 60 ]
+[v ___ftsub@f1 f1 `f  1 p 3 32 ]
+[v ___ftsub@f2 f2 `f  1 p 3 35 ]
 "27
+} 0
+"86 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+{
+"88
+[v ___ftadd@exp1 exp1 `uc  1 a 1 31 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 30 ]
+[v ___ftadd@sign sign `uc  1 a 1 29 ]
+"86
+[v ___ftadd@f1 f1 `f  1 p 3 20 ]
+[v ___ftadd@f2 f2 `f  1 p 3 23 ]
+"148
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftneg.c
 [v ___ftneg __ftneg `(f  1 e 3 0 ]
@@ -907,71 +789,85 @@
 [v ___ftge@ff2 ff2 `f  1 p 3 3 ]
 "13
 } 0
-"98 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
-[v _INT0_ISR INT0_ISR `(v  1 e 1 0 ]
+"81 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\lcd.c
+[v _lcd_sendStringToPos lcd_sendStringToPos `(v  1 e 1 0 ]
 {
-"140
+[v lcd_sendStringToPos@x x `uc  1 a 1 wreg ]
+[v lcd_sendStringToPos@x x `uc  1 a 1 wreg ]
+[v lcd_sendStringToPos@y y `uc  1 p 1 8 ]
+[v lcd_sendStringToPos@charString charString `*.39Cuc  1 p 2 9 ]
+"83
+[v lcd_sendStringToPos@x x `uc  1 a 1 11 ]
+"85
 } 0
-"51 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/tmr0.c
-[v i2_TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
+"18
+[v _lcd_setPosition lcd_setPosition `(v  1 e 1 0 ]
 {
-"55
+[v lcd_setPosition@x x `uc  1 a 1 wreg ]
+"20
+[v lcd_setPosition@temp temp `uc  1 a 1 7 ]
+[v lcd_setPosition@j j `uc  1 a 1 6 ]
+[v lcd_setPosition@i i `uc  1 a 1 5 ]
+"18
+[v lcd_setPosition@x x `uc  1 a 1 wreg ]
+[v lcd_setPosition@y y `uc  1 p 1 3 ]
+"21
+[v lcd_setPosition@x x `uc  1 a 1 4 ]
+"37
 } 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
+"3
+[v i2_lcd_sendCommand lcd_sendCommand `(v  1 e 1 0 ]
 {
-"17
-[v ___wmul@product product `ui  1 a 2 18 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
-"53
+[v i2lcd_sendCommand@a a `uc  1 a 1 wreg ]
+[v i2lcd_sendCommand@a a `uc  1 a 1 wreg ]
+"5
+[v i2lcd_sendCommand@a a `uc  1 a 1 2 ]
+"10
 } 0
-"28 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\lwtoft.c
-[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"74
+[v _lcd_sendString lcd_sendString `(v  1 e 1 0 ]
 {
-[v ___lwtoft@c c `ui  1 p 2 8 ]
-"31
+"76
+[v lcd_sendString@i i `i  1 a 2 6 ]
+"74
+[v lcd_sendString@a a `*.39Cuc  1 p 2 4 ]
+"79
 } 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"58
+[v _lcd_sendChar lcd_sendChar `(v  1 e 1 0 ]
 {
-"65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 30 ]
-"64
-[v ___ftmul@sign sign `uc  1 a 1 34 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 33 ]
-[v ___ftmul@exp exp `uc  1 a 1 29 ]
-"62
-[v ___ftmul@f1 f1 `f  1 p 3 20 ]
-[v ___ftmul@f2 f2 `f  1 p 3 23 ]
-"157
+[v lcd_sendChar@a a `Cuc  1 a 1 wreg ]
+"60
+[v lcd_sendChar@y y `uc  1 a 1 2 ]
+[v lcd_sendChar@temp temp `uc  1 a 1 1 ]
+"58
+[v lcd_sendChar@a a `Cuc  1 a 1 wreg ]
+"61
+[v lcd_sendChar@a a `Cuc  1 a 1 3 ]
+"72
+} 0
+"139
+[v i2__lcd_Port _lcd_Port `(v  1 e 1 0 ]
+{
+[v i2__lcd_Port@a a `uc  1 a 1 wreg ]
+[v i2__lcd_Port@a a `uc  1 a 1 wreg ]
+"141
+[v i2__lcd_Port@a a `uc  1 a 1 0 ]
+"160
 } 0
 "54 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
-[v ___ftdiv@f3 f3 `f  1 a 3 67 ]
+[v ___ftdiv@f3 f3 `f  1 a 3 57 ]
 "59
-[v ___ftdiv@sign sign `uc  1 a 1 71 ]
-[v ___ftdiv@exp exp `uc  1 a 1 70 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 66 ]
+[v ___ftdiv@sign sign `uc  1 a 1 61 ]
+[v ___ftdiv@exp exp `uc  1 a 1 60 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 56 ]
 "54
-[v ___ftdiv@f1 f1 `f  1 p 3 57 ]
-[v ___ftdiv@f2 f2 `f  1 p 3 60 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 47 ]
+[v ___ftdiv@f2 f2 `f  1 p 3 50 ]
 "86
-} 0
-"86 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\ftadd.c
-[v ___ftadd __ftadd `(f  1 e 3 0 ]
-{
-"88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 56 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 55 ]
-[v ___ftadd@sign sign `uc  1 a 1 54 ]
-"86
-[v ___ftadd@f1 f1 `f  1 p 3 45 ]
-[v ___ftadd@f2 f2 `f  1 p 3 48 ]
-"148
 } 0
 "62 C:\Program Files (x86)\Microchip\xc8\v1.40\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
@@ -1002,12 +898,12 @@
 [v TMR0_ReadTimer@readValLow readValLow `uc  1 a 1 8 ]
 "76
 } 0
-"42 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
+"45 D:\OneDrive\Electronics\Microchip\LCR_Meter.X\mcc_generated_files/ext_int.c
 [v _SetRange SetRange `(v  1 e 1 0 ]
 {
 [v SetRange@new_range new_range `uc  1 a 1 wreg ]
 [v SetRange@new_range new_range `uc  1 a 1 wreg ]
-"45
+"48
 [v SetRange@new_range new_range `uc  1 a 1 10 ]
-"50
+"53
 } 0

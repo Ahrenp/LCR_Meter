@@ -8271,46 +8271,10 @@ extern void (*TMR0_InterruptHandler)(void);
 # 344
 void TMR0_DefaultInterruptHandler(void);
 
-# 93 "mcc_generated_files/tmr1.h"
-void TMR1_Initialize(void);
-
-# 124
-void TMR1_StartTimer(void);
-
-# 154
-void TMR1_StopTimer(void);
-
-# 188
-uint16_t TMR1_ReadTimer(void);
-
-# 214
-void TMR1_WriteTimer(uint16_t timerVal);
-
-# 246
-void TMR1_Reload(void);
-
-# 287
-void TMR1_StartSinglePulseAcquisition(void);
-
-# 328
-uint8_t TMR1_CheckGateValueStatus(void);
-
-# 344
-void TMR1_ISR(void);
-
-# 363
-void TMR1_SetInterruptHandler(void *InterruptHandler);
-
-# 381
-extern void (*TMR1_InterruptHandler)(void);
-
-# 399
-void TMR1_DefaultInterruptHandler(void);
-
-# 69 "mcc_generated_files/mcc.h"
+# 68 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 82
+# 81
 void OSCILLATOR_Initialize(void);
 
 # 4 "mcc_generated_files/interrupt_manager.c"
@@ -8323,11 +8287,7 @@ RCONbits.IPEN = 0;
 void interrupt INTERRUPT_InterruptManager (void)
 {
 
-if(INTCONbits.PEIE == 1 && PIE1bits.TMR1IE == 1 && PIR1bits.TMR1IF == 1)
-{
-TMR1_ISR();
-}
-else if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
+if(INTCON3bits.INT1IE == 1 && INTCON3bits.INT1IF == 1)
 {
 INT1_ISR();
 }
